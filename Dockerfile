@@ -2,6 +2,11 @@ FROM --platform=linux/amd64 ruby:3.2.2
 
 RUN apt-get update -qq && apt-get install -y build-essential default-mysql-client
 
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get update && \
+    apt-get install -y nodejs && \
+    npm install -g yarn
+
 ENV app_path /rails_app
 RUN mkdir ${app_path}
 WORKDIR ${app_path}
