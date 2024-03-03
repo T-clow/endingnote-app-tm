@@ -1,24 +1,37 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# エンディングノートアプリ
 
-Things you may want to cover:
+エンディングノートアプリは、ユーザーが生前に大切な思い出やメッセージ、財産情報などを整理し、遺族に伝えることができるWebアプリケーションです。このアプリケーションを通じて、ユーザーは重要な情報をデジタル形式で記録し、遺族に共有することが可能になります。
 
-* Ruby version
+## 機能
 
-* System dependencies
+- ユーザー登録・ログイン機能
+- エンディングノートの作成・編集・削除機能
+- メモリアルページのカスタマイズ機能
+- 動画や音声メッセージのアップロード機能
+- 遺族への共有機能（共有リンクの生成）
 
-* Configuration
+## 技術スタック
 
-* Database creation
+- HTML/CSS/JavaScript
+- Ruby on Rails
+- Docker
+- Heroku
+- GitHub Actions
+- RSpec
+- RuboCop
+- Bootstrap
 
-* Database initialization
+## コミットメッセージルール
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- `fix`：バグ修正。
+- `hotfix`：クリティカルなバグ修正。
+- `add`：新規（ファイル）機能追加。
+- `update`：機能修正（バグではない）。
+- `change`：仕様変更。
+- `clean`：整理（リファクタリング等）。
+- `disable`：無効化（コメントアウト等）。
+- `remove`：削除（ファイル）。
+- `upgrade`：バージョンアップ。
+- `revert`：変更取り消し。
+- `branch`：新たなブランチを作成。
