@@ -1,0 +1,31 @@
+@startuml my_diagram
+entity "User" {
+  *id : integer
+  --
+  *username : string
+  *email : string
+  *password : string
+}
+
+entity "Note" {
+  *noteId : integer
+  --
+  *title : string
+  *content : string
+  *createdAt : date
+  *userId : integer
+}
+
+entity "Media" {
+  *mediaId : integer
+  --
+  *type : string
+  *url : string
+  *noteId : integer
+  *userId : integer
+}
+
+User ||--o{ Note : "has many"
+User ||--o{ Media : "has many"
+Note ||--o{ Media : "can have many"
+@enduml
