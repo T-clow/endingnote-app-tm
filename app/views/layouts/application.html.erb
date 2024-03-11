@@ -36,7 +36,9 @@
             <% else %>
               <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
               <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
-              <%= link_to 'ゲストログイン', "/", method: :post, class: 'btn btn-outline-success my-2 my-sm-0', role: 'button' %>
+              <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
+                <%= form.submit "ゲストログイン", class: 'btn btn-outline-success my-2 my-sm-0' %>
+              <% end %>              
           <% end %>
         </div>
       </nav>
