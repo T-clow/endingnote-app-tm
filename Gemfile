@@ -12,10 +12,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
-
 gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 gem 'sassc-rails'
+gem "devise"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
