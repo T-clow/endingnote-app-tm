@@ -1,0 +1,46 @@
+.title {
+    background-image: url(asset-path('blue_sky.jpg'));
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  
+  .title_name   {
+    color: white;
+  }
+
+.card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card .card-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.card-text {
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width : 100%;
+}
+
+.btn-primary:hover {
+  background-color: #004094;
+}
