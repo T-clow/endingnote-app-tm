@@ -1,44 +1,46 @@
-<h1>サンプルページ</h1>
-<h1>エンディングノート</h1>
-<div class="container mt-5">
+<div class="py-5 bg-light border-bottom mb-4">
+  <div class="container">
+    <div class="text-center my-5">
+      <h1 class="fw-bolder">ようこそエンディングノートへ</h1>
+      <p class="lead mb-0">シンプルな操作で葬儀選びを後世に伝える</p>
+    </div>
+  </div>
+</div>  
+<main class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-4 mb-5">
+      <%= link_to '/', class: 'text-decoration-none' do %>
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">ご葬儀プラン</h2>
+            <p class="card-text">ご希望の葬儀の想いを残す、お望みのご葬儀プランをシンプル操作で選べます。</p>
+            <span class="btn btn-primary">詳細</span>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn-primary">テストボタン</button>
+    <div class="col-md-4 mb-5">
+      <%= link_to '/', class: 'text-decoration-none' do %>
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">加入中保険</h2>
+            <p class="card-text">今亡くなったら、10年後に亡くなったらいくら残せるかがわかります。</p>
+            <span class="btn btn-primary">詳細</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4 mb-5">
+      <%= link_to '/', class: 'text-decoration-none' do %>
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">葬儀場MAP</h2>
+            <p class="card-text">ご希望に合わせてお住まいの近くの葬儀屋さんを探せます。</p>
+            <span class="btn btn-primary">詳細</span>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+</main>
 
-  <div class="row mt-3">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">カードタイトル</h5>
-          <p class="card-text">これはカードのコンテンツの一部です。ブートストラップで簡単にスタイリッシュなカードを作成できます。</p>
-          <a href="#" class="btn btn-primary">詳細を見る</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">カードタイトル</h5>
-          <p class="card-text">ブートストラップを使って、レスポンシブで美しいデザインを実現できます。</p>
-          <a href="#" class="btn btn-primary">詳細を見る</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">カードタイトル</h5>
-          <p class="card-text">さまざまなコンポーネントを組み合わせて、ユーザーフレンドリーなUIを構築しましょう。</p>
-          <a href="#" class="btn btn-primary">詳細を見る</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
