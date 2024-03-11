@@ -16,6 +16,9 @@ gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 gem 'sassc-rails'
 gem "devise"
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
