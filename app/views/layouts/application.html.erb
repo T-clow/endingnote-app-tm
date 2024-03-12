@@ -30,6 +30,9 @@
           </ul>
           <% if current_user %>
             <p class="user_name">ようこそ <%= current_user.username %> 様</p>
+            <% if user_signed_in? %>
+              <%= link_to "編集", edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', role: 'button' %>
+            <% end %>
             <%= form_tag(destroy_user_session_path, method: :delete) do %>
               <%= submit_tag 'ログアウト', class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
             <% end %>

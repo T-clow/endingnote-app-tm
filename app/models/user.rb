@@ -17,4 +17,8 @@ class User < ApplicationRecord
       user.phone_number = "0000000000"
     end
   end
+
+  def guest?
+    email == 'guest@example.com'
+  end
 end
