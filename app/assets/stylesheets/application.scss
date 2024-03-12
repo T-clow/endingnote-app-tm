@@ -2,12 +2,37 @@
 @import "home";
 
 body {
-    padding-top: 50px;
+  padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 60px;
+    overflow: hidden;
   }
+}
+
+.flash {
+  text-align: center;
+  background-color: #c1e2df;
+  color: #043323;
+  padding-top: 10px;
+}
+
+#error_explanation {
+  padding-top : 20px;
+  text-align: center;
+  color: #c80f0f;
+}
+
+#error_explanation ul {
+  list-style-type: none;
+  padding-left: 0;
+}
 
 .user_name {
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   margin-right: 20px;
   margin-top: 10px;
  }

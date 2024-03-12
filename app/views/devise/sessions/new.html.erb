@@ -1,6 +1,4 @@
-<div class="container home-sections d-flex flex-row justify-content-center
-align-items-center"
->
+<div class="container home-sections d-flex flex-row justify-content-center align-items-center">
   <div class="images-section pt-3 d-none d-lg-block"></div>
   <div class="login-section pt-3">
     <div class="card text-center pt-5" style="width: 23rem;">
@@ -15,17 +13,12 @@ align-items-center"
           </div>
           <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
         <% end %>
-        <% if notice %>
-          <p class="notice"><%= notice %></p>
-        <% elsif alert %>
-          <p class="alert"><%= alert %></p>
-        <% end %>
-        <a href="#" class="fs-6 d-block my-4 text-decoration-none"> パスワードを忘れた？</a>
+        <%= link_to "パスワードを忘れた方", "#", class: "fs-6 d-block my-4 text-decoration-none" %>
       </div>
     </div>
     <div class="card text-center py-2 mt-3" style="width: 23rem;">
       <div class="card-text">
-        アカウントを持っていない？
+        アカウントを持っていない方はこちら
         <%= link_to "新規登録へ", new_user_registration_path, class: "fs-6 my-4 text-decoration-none text-info" %>
       </div>
     </div>
