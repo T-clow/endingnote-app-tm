@@ -1,3 +1,4 @@
-example_id                          | status | run_time     |
------------------------------------ | ------ | ------------ |
-./spec/requests/home_spec.rb[1:1:1] | passed | 2.28 seconds |
+example_id                          | status  | run_time        |
+----------------------------------- | ------- | --------------- |
+./spec/models/user_spec.rb[1:1]     | pending | 0.00003 seconds |
+./spec/requests/home_spec.rb[1:1:1] | passed  | 2.78 seconds    |
