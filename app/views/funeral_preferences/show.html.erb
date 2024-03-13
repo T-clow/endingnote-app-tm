@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="mb-0">葬儀設定の詳細</h1>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><strong>葬儀の種類:</strong> <%= @funeral_preference.funeral_type %></p>
+          <p class="card-text"><strong>ご予算:</strong> <%= @funeral_preference.budget %></p>
+          <p class="card-text"><strong>呼ぶ人:</strong> <%= @funeral_preference.invitees %></p>
+          <p class="card-text"><strong>場所:</strong> <%= @funeral_preference.location %></p>
+          <p class="card-text"><strong>宗派:</strong> <%= @funeral_preference.sect %></p>
+          <div class="mt-4">
+            <%= link_to '編集', edit_funeral_preference_path(@funeral_preference), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

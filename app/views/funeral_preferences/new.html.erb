@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>葬儀設定</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @funeral_preference, local: true do |form| %>
+            <div class="form-group">
+              <%= form.label :funeral_type, "葬儀の種類", class: 'form-label' %>
+              <%= form.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), {}, { class: 'form-control' } %>
+            </div>
+            <div class="form-group">
+              <%= form.label :budget, "ご予算", class: 'form-label' %>
+              <%= form.select :budget, options_for_select(FuneralPreference::BUDGETS, @funeral_preference.budget), {}, { class: 'form-control' } %>
+            </div>
+            <div class="form-group">
+              <%= form.label :invitees, "呼ぶ人", class: 'form-label' %>
+              <%= form.select :invitees, options_for_select(FuneralPreference::INVITEES, @funeral_preference.invitees), {}, { class: 'form-control' } %>
+            </div>
+            <div class="form-group">
+              <%= form.label :location, "場所", class: 'form-label' %>
+              <%= form.select :location, options_for_select(FuneralPreference::LOCATIONS, @funeral_preference.location), {}, { class: 'form-control' } %>
+            </div>
+            <div class="form-group">
+              <%= form.label :sect, "宗派", class: 'form-label' %>
+              <%= form.select :sect, options_for_select(FuneralPreference::SECTS, @funeral_preference.sect), {}, { class: 'form-control' } %>
+            </div>
+            <div class="actions mt-4">
+              <%= form.submit "保存", class: "btn btn-primary w-100" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

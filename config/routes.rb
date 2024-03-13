@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'funeral_preferences/new'
+  get 'funeral_preferences/create'
   devise_for :users, controllers: {
   registrations: 'registrations'
 }
@@ -7,4 +9,6 @@ Rails.application.routes.draw do
   end
   get "up" => "rails/health#show", as: :rails_health_check
   get '/', to: 'home#index'
+
+  resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
 end

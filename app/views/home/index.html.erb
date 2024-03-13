@@ -10,7 +10,7 @@
   <main class="container">
     <div class="row">
       <div class="col-md-4 mb-5">
-        <%= link_to '/', class: 'text-decoration-none' do %>
+        <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">ご葬儀プラン</h2>

@@ -1,17 +1,20 @@
-example_id                                   | status | run_time        |
--------------------------------------------- | ------ | --------------- |
-./spec/models/user_spec.rb[1:1:1]            | passed | 0.00425 seconds |
-./spec/models/user_spec.rb[1:1:2]            | passed | 0.00626 seconds |
-./spec/models/user_spec.rb[1:1:3]            | passed | 0.00348 seconds |
-./spec/models/user_spec.rb[1:1:4]            | passed | 0.00466 seconds |
-./spec/models/user_spec.rb[1:1:5]            | passed | 0.00541 seconds |
-./spec/models/user_spec.rb[1:2:1]            | passed | 0.0075 seconds  |
-./spec/models/user_spec.rb[1:3:1]            | passed | 0.00647 seconds |
-./spec/models/user_spec.rb[1:3:2]            | passed | 0.00641 seconds |
-./spec/requests/home_spec.rb[1:1:1]          | passed | 0.00461 seconds |
-./spec/requests/user_sessions_spec.rb[1:1:1] | passed | 0.01159 seconds |
-./spec/requests/user_sessions_spec.rb[1:2:1] | passed | 0.01103 seconds |
-./spec/system/users_spec.rb[1:1:1]           | passed | 0.02895 seconds |
-./spec/system/users_spec.rb[1:2:1]           | passed | 0.03749 seconds |
-./spec/system/users_spec.rb[1:3:1]           | passed | 2.85 seconds    |
-./spec/system/users_spec.rb[1:4:1]           | passed | 0.03664 seconds |
+example_id                                             | status  | run_time        |
+------------------------------------------------------ | ------- | --------------- |
+./spec/helpers/funeral_preferences_helper_spec.rb[1:1] | pending | 0.00001 seconds |
+./spec/models/user_spec.rb[1:1:1]                      | passed  | 0.00396 seconds |
+./spec/models/user_spec.rb[1:1:2]                      | passed  | 0.00323 seconds |
+./spec/models/user_spec.rb[1:1:3]                      | passed  | 0.00371 seconds |
+./spec/models/user_spec.rb[1:1:4]                      | passed  | 0.00344 seconds |
+./spec/models/user_spec.rb[1:1:5]                      | passed  | 0.11275 seconds |
+./spec/models/user_spec.rb[1:2:1]                      | passed  | 0.05782 seconds |
+./spec/models/user_spec.rb[1:3:1]                      | passed  | 0.0053 seconds  |
+./spec/models/user_spec.rb[1:3:2]                      | passed  | 0.00624 seconds |
+./spec/requests/funeral_preferences_spec.rb[1:1:1]     | failed  | 0.00341 seconds |
+./spec/requests/funeral_preferences_spec.rb[1:2:1]     | failed  | 0.16561 seconds |
+./spec/requests/home_spec.rb[1:1:1]                    | passed  | 2.82 seconds    |
+./spec/requests/user_sessions_spec.rb[1:1:1]           | passed  | 0.03022 seconds |
+./spec/requests/user_sessions_spec.rb[1:2:1]           | passed  | 0.01203 seconds |
+./spec/system/users_spec.rb[1:1:1]                     | passed  | 0.07128 seconds |
+./spec/system/users_spec.rb[1:2:1]                     | passed  | 0.03914 seconds |
+./spec/system/users_spec.rb[1:3:1]                     | passed  | 0.02239 seconds |
+./spec/system/users_spec.rb[1:4:1]                     | passed  | 0.02221 seconds |
