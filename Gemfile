@@ -12,10 +12,15 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
-
 gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 gem 'sassc-rails'
+gem "devise"
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'aws-sdk-s3', require: false
+gem 'dotenv-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
@@ -31,4 +36,6 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'webdrivers'
+  gem 'factory_bot_rails'
 end
