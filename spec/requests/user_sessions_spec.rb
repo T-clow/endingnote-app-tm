@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :request do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   describe "ログイン" do
     it "ログインできること" do
