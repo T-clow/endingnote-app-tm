@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    models:
+      user: "ユーザ"
+      funeral_preference: "葬儀設定"
     attributes:
       user:
         email: "メールアドレス"
@@ -7,6 +10,12 @@ ja:
         full_name: "お名前"
         username: "ユーザ名"
         phone_number: "電話番号"
+      funeral_preference:
+        funeral_type: "葬儀の種類"
+        budget: "ご予算"
+        invitees: "呼ぶ人"
+        location: "場所"
+        sect: "宗派"
     errors:
       models:
         user:
@@ -23,3 +32,15 @@ ja:
               blank: "を入力してください"
               not_a_number: "は数値で入力してください"
               too_short: "は10桁以上で入力してください"
+        funeral_preference:
+          attributes:
+            funeral_type:
+              blank: "を選択してください"
+            budget:
+              blank: "を選択してください"
+            invitees:
+              blank: "を選択してください"
+            location:
+              blank: "を選択してください"
+            sect:
+              blank: "を選択してください"

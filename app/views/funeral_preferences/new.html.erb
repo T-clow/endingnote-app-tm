@@ -1,3 +1,12 @@
+<% if @funeral_preference.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @funeral_preference.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -9,23 +18,23 @@
           <%= form_with model: @funeral_preference, local: true do |form| %>
             <div class="form-group">
               <%= form.label :funeral_type, "葬儀の種類", class: 'form-label' %>
-              <%= form.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), {}, { class: 'form-control' } %>
+              <%= form.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
             </div>
             <div class="form-group">
               <%= form.label :budget, "ご予算", class: 'form-label' %>
-              <%= form.select :budget, options_for_select(FuneralPreference::BUDGETS, @funeral_preference.budget), {}, { class: 'form-control' } %>
+              <%= form.select :budget, options_for_select(FuneralPreference::BUDGETS, @funeral_preference.budget), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
             </div>
             <div class="form-group">
               <%= form.label :invitees, "呼ぶ人", class: 'form-label' %>
-              <%= form.select :invitees, options_for_select(FuneralPreference::INVITEES, @funeral_preference.invitees), {}, { class: 'form-control' } %>
+              <%= form.select :invitees, options_for_select(FuneralPreference::INVITEES, @funeral_preference.invitees), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
             </div>
             <div class="form-group">
               <%= form.label :location, "場所", class: 'form-label' %>
-              <%= form.select :location, options_for_select(FuneralPreference::LOCATIONS, @funeral_preference.location), {}, { class: 'form-control' } %>
+              <%= form.select :location, options_for_select(FuneralPreference::LOCATIONS, @funeral_preference.location), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
             </div>
             <div class="form-group">
               <%= form.label :sect, "宗派", class: 'form-label' %>
-              <%= form.select :sect, options_for_select(FuneralPreference::SECTS, @funeral_preference.sect), {}, { class: 'form-control' } %>
+              <%= form.select :sect, options_for_select(FuneralPreference::SECTS, @funeral_preference.sect), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
             </div>
             <div class="actions mt-4">
               <%= form.submit "保存", class: "btn btn-primary w-100" %>
