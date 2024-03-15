@@ -29,15 +29,8 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Setup Chrome and ChromeDriver
-        run: |
-          sudo apt-get install -y google-chrome-stable
-          CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget -N http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip -P ~/
-          unzip ~/chromedriver_linux64.zip -d ~/
-          sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
-          sudo chown root:root /usr/local/bin/chromedriver
-          sudo chmod 0755 /usr/local/bin/chromedriver
+      - name: Setup ChromeDriver
+        uses: browser-actions/setup-chromedriver@latest
 
       - name: Set up Headless Chrome
         run: |
