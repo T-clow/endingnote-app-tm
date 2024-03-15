@@ -29,18 +29,14 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1
 
-      - name: Bundler and gem install
+      - name: Set up Headless Chrome
         run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          sudo apt-get update
+          sudo apt-get install -y libappindicator1 fonts-liberation
+          sudo snap install chromium
 
       - name: Yarn install
         run: yarn install --check-files

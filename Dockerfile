@@ -20,3 +20,14 @@ COPY . ${app_path}
 COPY ./start.sh /start.sh
 RUN chmod 744 /start.sh
 CMD ["sh", "/start.sh"]
+
+# Google Chromeの直接ダウンロードとインストール
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+  && dpkg -i google-chrome-stable_current_amd64.deb || apt-get install -yf \
+  && rm google-chrome-stable_current_amd64.deb
+
+# ChromeDriverのインストール
+ARG CHROMEDRIVER_VERSION=94.0.4606.61
+RUN wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" \
+  && unzip /chromedriver/chromedriver* -d /usr/local/bin/ \
+  && rm /chromedriver/chromedriver_linux64.zip
