@@ -13,11 +13,9 @@ Capybara.register_driver :selenium_remote_chrome do |app|
   options.add_argument('--no-sandbox')
   options.add_argument('--window-size=1400,1400')
 
-  url = ENV['CI'] ? "http://selenium:4444/wd/hub" : "http://chrome:4444/wd/hub"
-
   Capybara::Selenium::Driver.new(app,
     browser: :remote,
-    url: url,
+    url: "http://chrome:4444/wd/hub",
     capabilities: options)
 end
 
