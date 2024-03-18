@@ -32,5 +32,21 @@ RSpec.describe FuneralPreference, type: :model do
       funeral_preference.sect = ''
       expect(funeral_preference).not_to be_valid
     end
+
+    it '備考が200文字以内であれば有効であること' do
+      funeral_preference.remarks = 'a' * 200
+      expect(funeral_preference).to be_valid
+    end
+
+    it '備考が200文字を超える場合は無効であること' do
+      funeral_preference.remarks = 'a' * 201
+      expect(funeral_preference).not_to be_valid
+      expect(funeral_preference.errors[:remarks]).to include("は200文字以内にしてください。")
+    end
+
+    it '備考が空白でも有効であること' do
+      funeral_preference.remarks = ''
+      expect(funeral_preference).to be_valid
+    end
   end
 end

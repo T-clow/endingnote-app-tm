@@ -18,6 +18,7 @@
           <p class="card-text"><strong>呼ぶ人:</strong> <%= @funeral_preference.invitees %></p>
           <p class="card-text"><strong>場所:</strong> <%= @funeral_preference.location %></p>
           <p class="card-text"><strong>宗派:</strong> <%= @funeral_preference.sect %></p>
+          <p class="card-text"><strong>備考:</strong> <%= @funeral_preference.remarks %></p>
           <div class="mt-4">
             <%= link_to '編集', edit_funeral_preference_path(@funeral_preference), class: 'btn btn-primary' %>
           </div>

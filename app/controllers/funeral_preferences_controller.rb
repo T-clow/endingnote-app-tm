@@ -7,10 +7,11 @@ class FuneralPreferencesController < ApplicationController
   end
 
   def create
-    @funeral_preference = current_user.build_funeral_preference(funeral_preference_params)
+    @funeral_preference = current_user.funeral_preferences.build(funeral_preference_params)
     if @funeral_preference.save
-      redirect_to @funeral_preference, notice: '葬儀の設定が作成されました。'
+      redirect_to @funeral_preference, notice: '葬儀設定が正常に作成されました。'
     else
+      flash[:alert] = '葬儀設定の作成に失敗しました。'
       render :new
     end
   end
@@ -28,8 +29,10 @@ class FuneralPreferencesController < ApplicationController
 
   def update
     if @funeral_preference.update(funeral_preference_params)
-      redirect_to @funeral_preference, notice: '葬儀の設定が更新されました。'
+      redirect_to @funeral_preference, notice: '葬儀設定が正常に更新されました。'
     else
+      set_selections
+      flash[:alert] = '葬儀設定の更新に失敗しました。'
       render :edit
     end
   end
@@ -46,7 +49,7 @@ class FuneralPreferencesController < ApplicationController
   end
 
   def funeral_preference_params
-    params.require(:funeral_preference).permit(:funeral_type, :budget, :invitees, :location, :sect)
+    params.require(:funeral_preference).permit(:funeral_type, :budget, :invitees, :location, :sect, :remarks)
   end
 
   def set_selections

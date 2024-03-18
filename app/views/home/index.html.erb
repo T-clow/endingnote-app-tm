@@ -14,14 +14,47 @@
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">ご葬儀プラン</h2>
-              <p class="card-text">想いを残す、お望みのご葬儀プランをシンプル操作で選べます。</p>
+              <p class="card-text">お望みのご葬儀プランをシンプル操作で選べます。</p>
               <span class="btn btn-primary">詳細</span>
             </div>
           </div>
         <% end %>
       </div>
       <div class="col-md-4 mb-5">
-        <%= link_to '/', class: 'text-decoration-none' do %>
+        <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">家族へのメッセージ</h2>
+              <p class="card-text">伝えたい言葉、想いを 動画でご家族に残せます。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
+        <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">ご遺影</h2>
+              <p class="card-text">永遠の思い出、お気に入りの一枚を遺影で残せます。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
+        <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">ご家族の掲示板</h2>
+              <p class="card-text">遠く離れたご家族と連絡が取れる、情報共有の掲示板です。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
+       <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">ご加入中の保険</h2>
@@ -32,7 +65,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-5">
-        <%= link_to '/', class: 'text-decoration-none' do %>
+        <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? funeral_preference_path(current_user.funeral_preference) : new_funeral_preference_path) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">葬儀場MAP</h2>

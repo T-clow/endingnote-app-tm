@@ -2,6 +2,7 @@ class FuneralPreference < ApplicationRecord
   belongs_to :user
 
   validates :funeral_type, :budget, :invitees, :location, :sect, presence: true
+  validates :remarks, length: { maximum: 200, message: "は200文字以内にしてください。" }, allow_blank: true
 
   FUNERAL_TYPES = ['家族葬にして欲しい', '小さなお葬式にして欲しい', '葬儀はせず火葬だけにして欲しい', '一般的な通夜と告別式の葬儀をして欲しい', '家族の判断に任せる'].freeze
   BUDGETS = ['世間に恥じない一般的な金額にして欲しい', 'できるだけお金をかけないで欲しい', '準備している金額で可能な限り盛大にして欲しい', '家族の判断に任せる'].freeze

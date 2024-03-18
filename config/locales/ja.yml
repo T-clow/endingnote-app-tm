@@ -16,6 +16,7 @@ ja:
         invitees: "呼ぶ人"
         location: "場所"
         sect: "宗派"
+        remarks: "備考"
     errors:
       models:
         user:

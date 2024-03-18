@@ -77,4 +77,50 @@ RSpec.describe 'FuneralPreferences', type: :request do
       expect(response).to redirect_to("/")
     end
   end
+
+  context '備考が200文字を超える場合' do
+    let(:long_remarks) { 'a' * 201 }
+    let(:funeral_preference_params_with_long_remarks) do
+      {
+        funeral_preference: {
+          funeral_type: '家族葬にして欲しい',
+          budget: '世間に恥じない一般的な金額にして欲しい',
+          invitees: '10人以下',
+          location: '自宅',
+          sect: '仏教',
+          remarks: long_remarks,
+        },
+      }
+    end
+
+    it '葬儀設定の作成に失敗すること' do
+      expect do
+        post funeral_preferences_path, params: funeral_preference_params_with_long_remarks
+      end.not_to change(FuneralPreference, :count)
+      expect(response.body).to include '備考は200文字以内にしてください。'
+    end
+  end
+
+  context '備考が200文字以内の場合' do
+    let(:valid_remarks) { 'a' * 200 }
+    let(:funeral_preference_params_with_valid_remarks) do
+      {
+        funeral_preference: {
+          funeral_type: '家族葬にして欲しい',
+          budget: '世間に恥じない一般的な金額にして欲しい',
+          invitees: '10人以下',
+          location: '自宅',
+          sect: '仏教',
+          remarks: valid_remarks,
+        },
+      }
+    end
+
+    it '葬儀設定を作成できること' do
+      expect do
+        post funeral_preferences_path, params: funeral_preference_params_with_valid_remarks
+      end.to change(FuneralPreference, :count).by(1)
+      expect(response).to redirect_to(FuneralPreference.last)
+    end
+  end
 end
