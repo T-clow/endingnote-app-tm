@@ -11,7 +11,7 @@ jobs:
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
-      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
+      SELENIUM_DRIVER_URL: http://selenium:4444/wd/hub
     services:
       mysql:
         image: mysql:8.0
@@ -57,7 +57,7 @@ jobs:
           bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Test Selenium Connection
-        run: curl http://chrome:4444/wd/hub/status
+        run: curl http://selenium:4444/wd/hub/status
 
       - name: Run rspec
         run: bundle exec rspec
