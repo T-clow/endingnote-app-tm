@@ -56,6 +56,9 @@ jobs:
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
 
+      - name: Test Selenium Connection
+        run: curl http://chrome:4444/wd/hub/status
+
       - name: Run rspec
         run: bundle exec rspec
 
