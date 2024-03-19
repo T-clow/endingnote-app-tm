@@ -16,10 +16,10 @@ if ENV['CI'] == 'true'
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
-      url: "http://chrome:4444/wd/hub",
+      url: "http://localhost:4444/wd/hub",
       capabilities: options)
   end
-  Capybara.javascript_driver = :selenium_chrome_headless
+  Capybara.javascript_driver = :selenium_remote_chrome
 else
   Capybara.register_driver :selenium_remote_chrome do |app|
     options = Selenium::WebDriver::Chrome::Options.new
