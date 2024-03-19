@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-
+  
   rspec:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -19,7 +19,11 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
         options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
-
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+         - 4444:4444
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
