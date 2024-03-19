@@ -49,6 +49,7 @@
           <div class="mt-3">
             <%= button_to '削除', funeral_preference_path(@funeral_preference),method: :delete, data: { confirm: '本当に削除しますか？' },class: "btn btn-danger w-100" %>
           </div>
+          <%= link_to "前の画面に戻る", current_user.funeral_preference, class: "btn btn-secondary w-100 mt-3" %>
         </div>
       </div>
     </div>
