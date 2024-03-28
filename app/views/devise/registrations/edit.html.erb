@@ -59,7 +59,8 @@
     </div>
     <div class="card text-center py-2 mt-3 mx-auto" style="width: 23rem;">
       <div class="card-text">
-        アカウントを削除しますか？ <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？", turbo_confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger" %>
+        アカウントを削除しますか？ 
+        <%= button_to "アカウントを削除する", registration_path(resource_name), method: "delete", form: { data: { turbo_confirm: "本当に削除しますか？" } },class: "btn btn-danger" %>
       </div>
     </div>
   </div>
