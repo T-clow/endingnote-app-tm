@@ -42,11 +42,12 @@ RSpec.describe "FuneralPreferences", type: :system do
     end
   end
 
-  describe "アカウント削除ができること" do
-    it "アカウントを削除し、成功のメッセージが表示されること" do
+  describe "葬儀設定を削除できること" do
+    it "葬儀設定を削除し、成功のメッセージが表示されること" do
       login_as(user, scope: :user)
       visit edit_user_registration_path
       find('button.btn-danger', text: '削除').click
+      accept_alert
       expect(page).to have_content("アカウントを削除しました。")
     end
   end
