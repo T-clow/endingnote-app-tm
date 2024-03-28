@@ -1,0 +1,2 @@
+module FuneralPreferencesHelper
+end

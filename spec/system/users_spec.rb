@@ -4,7 +4,7 @@ RSpec.describe "Users", type: :system do
   let(:user) { create(:user) }
 
   before do
-    driven_by(:rack_test)
+    driven_by(:selenium_remote_chrome)
   end
 
   describe "新規登録ができること" do
@@ -44,7 +44,9 @@ RSpec.describe "Users", type: :system do
     it "アカウントを削除し、成功のメッセージが表示されること" do
       login_as(user, scope: :user)
       visit edit_user_registration_path
-      page.driver.submit :delete, user_registration_path, {}
+      fill_in "現在のパスワード", with: user.password
+      find('button', text: 'アカウントを削除する').click
+      accept_alert
       expect(page).to have_content("アカウントを削除しました。")
     end
   end
