@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get '/', to: 'home#index'
 
+  resources :users do
+    resources :will_videos, only: [:new, :create, :show, :edit, :destroy]
+  end
   resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
 end

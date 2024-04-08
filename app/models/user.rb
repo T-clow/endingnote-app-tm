@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :funeral_preference
   has_many :funeral_preferences, dependent: :destroy
   has_one_attached :avatar
+  has_many :will_videos, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
