@@ -23,9 +23,6 @@
               <%= form.label :video, "遺言動画" %>
               <%= form.file_field :video, name: 'will_video[video]', accept: 'video/*', id: 'videoFile' %>
             </div> 
-            <small class="form-text text-muted">
-              ご注意: アップロードする動画は10分以内でご設定ください。
-            </small> 
             <div class="actions mt-4">
               <%= form.submit "アップロード", class: "btn btn-primary w-100" %>
             </div>
