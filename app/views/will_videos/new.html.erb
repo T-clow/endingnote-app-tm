@@ -1,3 +1,15 @@
+
+<% if @will_video.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @will_video.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -9,8 +21,11 @@
           <%= form_with(model: [@user, @will_video], local: true) do |form| %>
             <div class="form-group">
               <%= form.label :video, "遺言動画" %>
-              <%= form.file_field :video, accept: 'video/*' %>
-            </div>    
+              <%= form.file_field :video, name: 'will_video[video]', accept: 'video/*', id: 'videoFile' %>
+            </div> 
+            <small class="form-text text-muted">
+              ご注意: アップロードする動画は10分以内でご設定ください。
+            </small> 
             <div class="actions mt-4">
               <%= form.submit "アップロード", class: "btn btn-primary w-100" %>
             </div>
@@ -21,3 +36,8 @@
     </div>
   </div>
 </div>
+
+<script type="module">
+  import { setupVideoValidation } from "video_validation";
+  document.addEventListener("DOMContentLoaded", setupVideoValidation);
+</script>

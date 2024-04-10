@@ -10,8 +10,13 @@ class WillVideosController < ApplicationController
     if @will_video.save
       redirect_to [@user, @will_video], notice: '遺言動画をアップロードしました。'
     else
-      render :new
+      flash.now[:alert] = '動画を選択してください。'
+      render :new, status: :unprocessable_entity
     end
+  rescue ActionController::ParameterMissing
+    @will_video = @user.will_videos.build
+    flash.now[:alert] = '動画ファイルを選択してください。'
+    render :new, status: :bad_request
   end
 
   def show
