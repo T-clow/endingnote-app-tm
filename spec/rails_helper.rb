@@ -30,7 +30,7 @@ else
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
-      url: "http://192.168.48.3:4444",
+      url: "http://192.168.128.3:4444",
       capabilities: options)
   end
   Capybara.javascript_driver = :selenium_remote_chrome

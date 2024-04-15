@@ -12,7 +12,7 @@ class FuneralPreferencesController < ApplicationController
       redirect_to @funeral_preference, notice: '葬儀設定が正常に作成されました。'
     else
       flash[:alert] = '葬儀設定の作成に失敗しました。'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

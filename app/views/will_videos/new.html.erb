@@ -1,0 +1,41 @@
+
+<% if @will_video.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @will_video.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>遺言動画登録</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: [@user, @will_video], local: true) do |form| %>
+            <div class="form-group">
+              <%= form.label :video, "遺言動画" %>
+              <%= form.file_field :video, name: 'will_video[video]', accept: 'video/*', id: 'videoFile' %>
+              <small class="form-text text-muted">※動画は約15分以内、80MB以下に設定してください。</small>
+            </div> 
+            <div class="actions mt-4">
+              <%= form.submit "アップロード", class: "btn btn-primary w-100" %>
+            </div>
+          <% end %>
+          <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { setupVideoValidation } from "video_validation";
+  document.addEventListener("DOMContentLoaded", setupVideoValidation);
+</script>
