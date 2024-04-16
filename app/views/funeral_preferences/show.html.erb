@@ -20,7 +20,7 @@
           <p class="card-text"><strong>宗派:</strong> <%= @funeral_preference.sect %></p>
           <p class="card-text"><strong>備考:</strong> <%= @funeral_preference.remarks %></p>
           <div class="mt-4">
-            <%= link_to '編集', edit_funeral_preference_path(@funeral_preference), class: 'btn btn-primary' %>
+            <%= link_to '編集', edit_user_funeral_preference_path(current_user, @funeral_preference), class: 'btn btn-primary' %>
             <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-3" %>
           </div>
         </div>

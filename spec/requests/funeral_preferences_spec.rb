@@ -9,7 +9,7 @@ RSpec.describe 'FuneralPreferences', type: :request do
 
   describe 'GET /new' do
     it '新規葬儀設定ページを表示できること' do
-      get new_funeral_preference_path
+      get new_user_funeral_preference_path(user)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe 'FuneralPreferences', type: :request do
   describe 'GET /show' do
     it '葬儀設定の詳細ページを表示できること' do
       funeral_preference = create(:funeral_preference, user: user)
-      get funeral_preference_path(funeral_preference)
+      get user_funeral_preference_path(user, funeral_preference)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -37,16 +37,16 @@ RSpec.describe 'FuneralPreferences', type: :request do
 
     it '葬儀設定を作成できること' do
       expect do
-        post funeral_preferences_path, params: funeral_preference_params
+        post user_funeral_preferences_path(user), params: funeral_preference_params
       end.to change(FuneralPreference, :count).by(1)
-      expect(response).to redirect_to(FuneralPreference.last)
+      expect(response).to redirect_to(user_funeral_preference_path(user, FuneralPreference.last))
     end
   end
 
   describe 'GET /edit' do
     it '葬儀設定の編集ページを表示できること' do
       funeral_preference = create(:funeral_preference, user: user)
-      get edit_funeral_preference_path(funeral_preference)
+      get edit_user_funeral_preference_path(user, funeral_preference)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -62,9 +62,10 @@ RSpec.describe 'FuneralPreferences', type: :request do
     end
 
     it '葬儀設定を更新できること' do
-      patch funeral_preference_path(funeral_preference), params: update_params
+      funeral_preference = create(:funeral_preference, user: user)
+      patch user_funeral_preference_path(user, funeral_preference), params: update_params
       expect(funeral_preference.reload.funeral_type).to eq '直葬(火葬場)'
-      expect(response).to redirect_to(funeral_preference)
+      expect(response).to redirect_to(user_funeral_preference_path(user, funeral_preference))
     end
   end
 
@@ -72,7 +73,7 @@ RSpec.describe 'FuneralPreferences', type: :request do
     it '葬儀設定を削除できること' do
       funeral_preference = create(:funeral_preference, user: user)
       expect do
-        delete funeral_preference_path(funeral_preference)
+        delete user_funeral_preference_path(user, funeral_preference)
       end.to change(FuneralPreference, :count).by(-1)
       expect(response).to redirect_to("/")
     end
@@ -95,7 +96,7 @@ RSpec.describe 'FuneralPreferences', type: :request do
 
     it '葬儀設定の作成に失敗すること' do
       expect do
-        post funeral_preferences_path, params: funeral_preference_params_with_long_remarks
+        post user_funeral_preferences_path(user), params: funeral_preference_params_with_long_remarks
       end.not_to change(FuneralPreference, :count)
       expect(response.body).to include '備考は200文字以内にしてください。'
     end
@@ -118,9 +119,9 @@ RSpec.describe 'FuneralPreferences', type: :request do
 
     it '葬儀設定を作成できること' do
       expect do
-        post funeral_preferences_path, params: funeral_preference_params_with_valid_remarks
+        post user_funeral_preferences_path(user), params: funeral_preference_params_with_valid_remarks
       end.to change(FuneralPreference, :count).by(1)
-      expect(response).to redirect_to(FuneralPreference.last)
+      expect(response).to redirect_to(user_funeral_preference_path(user, FuneralPreference.last))
     end
   end
 end

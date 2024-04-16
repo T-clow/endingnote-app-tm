@@ -10,7 +10,7 @@ RSpec.describe "FuneralPreferences", type: :system do
 
   describe "新しい葬儀設定を作成" do
     it "ユーザーは新しい葬儀設定を作成できる" do
-      visit new_funeral_preference_path
+      visit new_user_funeral_preference_path(user)
       select '家族葬にして欲しい', from: '葬儀の種類'
       select 'できるだけお金をかけないで欲しい', from: 'ご予算'
       select '10人以下', from: '呼ぶ人'
@@ -26,7 +26,7 @@ RSpec.describe "FuneralPreferences", type: :system do
   describe "葬儀設定を編集" do
     it "ユーザーは葬儀設定を編集できる" do
       funeral_preference = create(:funeral_preference, user: user)
-      visit edit_funeral_preference_path(funeral_preference)
+      visit edit_user_funeral_preference_path(user, funeral_preference)
       select '小さなお葬式にして欲しい', from: '葬儀の種類'
       click_button '更新'
       expect(page).to have_content('葬儀設定が正常に更新されました。')
@@ -37,7 +37,7 @@ RSpec.describe "FuneralPreferences", type: :system do
   describe "葬儀設定を表示" do
     it "ユーザーは葬儀設定を表示できる" do
       funeral_preference = create(:funeral_preference, user: user)
-      visit funeral_preference_path(funeral_preference)
+      visit user_funeral_preference_path(user, funeral_preference)
       expect(page).to have_content(funeral_preference.funeral_type)
     end
   end

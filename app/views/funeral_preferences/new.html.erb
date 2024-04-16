@@ -15,7 +15,7 @@
           <h2>葬儀設定</h2>
         </div>
         <div class="card-body">
-          <%= form_with model: @funeral_preference, local: true do |form| %>
+          <%= form_with model: [@user, @funeral_preference], local: true do |form| %>
             <div class="form-group">
               <%= form.label :funeral_type, "葬儀の種類", class: 'form-label' %>
               <%= form.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), { prompt: "-項目をご選択ください-" }, { class: 'form-control' } %>
