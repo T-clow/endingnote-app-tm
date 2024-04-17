@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :will_videos, only: [:new, :create, :show, :edit, :destroy]
-    resources :memorial_photos, only: [:new, :create, :show, :edit, :destroy]
+    resources :memorial_photos, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 end

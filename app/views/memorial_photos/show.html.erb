@@ -1,2 +1,33 @@
-<h1>MemorialPhotos#show</h1>
-<p>Find me in app/views/memorial_photos/show.html.erb</p>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="mb-0">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag rails_blob_path(current_user.avatar), class: 'avatar-image' %>
+            <% else %>
+              <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: 'avatar-image') %>
+            <% end %>
+              <%= current_user.username %> 様のご遺影
+          </h1>
+        </div>
+        <div class="card-body">
+          <%= image_tag url_for(@memorial_photo.photo), controls: true, style: "max-width: 100%;" %>
+          <% if @memorial_photo.comment.present? %>
+            <div class="mt-3">
+              <h5>コメント:</h5>
+              <p><%= @memorial_photo.comment %></p>
+            </div>
+          <% end %>
+          <div class="mt-4">
+            <%= link_to '編集', edit_user_memorial_photo_path(@user, @memorial_photo), class: 'btn btn-primary' %>
+            <%= link_to '一覧に戻る', user_memorial_photos_path(@user), class: 'btn btn-info w-100 mt-3' %>
+            <%= link_to "トップページへ", "/", class: "btn btn-secondary w-100 mt-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
