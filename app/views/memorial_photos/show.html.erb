@@ -16,8 +16,7 @@
         <div class="card-body">
           <%= image_tag url_for(@memorial_photo.photo), controls: true, style: "max-width: 100%;" %>
           <% if @memorial_photo.comment.present? %>
-            <div class="mt-3">
-              <h5>コメント:</h5>
+            <div class="comment-box mt-3">
               <p><%= @memorial_photo.comment %></p>
             </div>
           <% end %>
