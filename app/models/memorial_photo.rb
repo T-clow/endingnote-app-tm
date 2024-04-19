@@ -28,8 +28,8 @@ class MemorialPhoto < ApplicationRecord
       errors.add(:photo, 'はJPEGまたはPNG形式である必要があります')
     end
 
-    if photo.byte_size > 30.megabytes
-      errors.add(:photo, 'のサイズは30MB以下である必要があります')
+    if photo.byte_size > 20.megabytes
+      errors.add(:photo, 'のサイズは20MB以下である必要があります')
     end
   end
 end
