@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="mb-0">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag rails_blob_path(current_user.avatar), class: 'avatar-image' %>
+            <% else %>
+              <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: 'avatar-image') %>
+            <% end %>
+            <%= current_user.username %> 様のご遺影一覧
+          </h1>
+        </div>
+        <div class="col-12 mt-4">
+          <%= link_to '画像を追加する', new_user_memorial_photo_path(@user), class: "btn btn-primary" %>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <% @memorial_photos.each do |photo| %>
+              <div class="card mb-4 shadow-sm">
+                <div class="img-wrapper">
+                  <%= image_tag(photo.photo, class: 'card-img') if photo.photo.attached? %>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">画像名: <%= photo.photo.filename.to_s if photo.photo.attached? %></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= link_to '詳細', user_memorial_photo_path(@user, photo), class: "btn btn-sm btn-outline-secondary" %>
+                    <%= button_to '削除', user_memorial_photo_path(@user, photo), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-sm btn-outline-danger" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="col-12 mt-4">
+              <%= link_to '画像を追加する', new_user_memorial_photo_path(@user), class: "btn btn-primary" %>
+              <%= link_to "トップページへ", "/", class: "btn btn-secondary w-100 mt-3" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

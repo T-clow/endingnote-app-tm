@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :memorial_photos
   has_one :funeral_preference
   has_many :funeral_preferences, dependent: :destroy
   has_one_attached :avatar

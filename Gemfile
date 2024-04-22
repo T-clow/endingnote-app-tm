@@ -29,6 +29,8 @@ group :development, :test do
   gem 'rubocop' 
   gem 'rubocop-airbnb'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -40,4 +42,5 @@ group :test do
   gem "selenium-webdriver"
   gem 'webdrivers'
   gem 'factory_bot_rails'
+  gem 'database_cleaner-active_record'
 end

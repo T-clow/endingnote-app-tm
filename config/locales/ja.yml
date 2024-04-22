@@ -3,6 +3,7 @@ ja:
     models:
       user: "ユーザ"
       funeral_preference: "葬儀設定"
+      memorial_photo: "遺影画像"
     attributes:
       user:
         email: "メールアドレス"
@@ -17,6 +18,9 @@ ja:
         location: "場所"
         sect: "宗派"
         remarks: "備考"
+      memorial_photo:
+        photo: "画像"
+        comment: "コメント"
     errors:
       models:
         user:
@@ -45,3 +49,8 @@ ja:
               blank: "を選択してください"
             sect:
               blank: "を選択してください"
+        memorial_photo:
+          attributes:
+            photo:
+              blank: "が選択されていません"
+
