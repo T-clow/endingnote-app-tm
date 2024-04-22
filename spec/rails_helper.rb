@@ -76,5 +76,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    ActiveRecord::Base.connection_pool.disconnect!
+    ActiveRecord::Base.establish_connection
   end
 end
