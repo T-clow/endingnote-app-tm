@@ -19,13 +19,22 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <%= link_to 'ご葬儀プラン', "/", class: 'nav-link' %><span class="sr-only">(current)</span>
+              <%= link_to "ご葬儀プラン", (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: "nav-link" %><span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
-              <%= link_to '加入中保険', "/", class: 'nav-link' %>
+              <%= link_to "家族へのメッセージ", (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to '葬儀場MAP', "/", class: 'nav-link' %>
+              <%= link_to "ご遺影", (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ご加入中の保険", "/", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "葬儀場MAP", "/", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "お問い合わせ", "/", class: "nav-link" %>
             </li>
           </ul>
           <% if current_user %>

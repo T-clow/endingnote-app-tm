@@ -32,22 +32,11 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-5">
-        <%= link_to user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path, class: 'text-decoration-none' do %>
+        <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">ご遺影</h2>
               <p class="card-text">永遠の思い出、お気に入りの一枚を遺影で残せます。</p>
-              <span class="btn btn-primary">詳細</span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-md-4 mb-5">
-        <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">ご家族の掲示板</h2>
-              <p class="card-text">遠く離れたご家族と連絡が取れる、情報共有の掲示板です。</p>
               <span class="btn btn-primary">詳細</span>
             </div>
           </div>
@@ -70,6 +59,17 @@
             <div class="card-body">
               <h2 class="card-title">葬儀場MAP</h2>
               <p class="card-text">ご希望に合わせてお住まいの近くの葬儀屋さんを探せます。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
+        <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">お問い合わせ</h2>
+              <p class="card-text">ご希望ご要望ございましたら、こちらまでご連絡ください。</p>
               <span class="btn btn-primary">詳細</span>
             </div>
           </div>
