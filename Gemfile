@@ -20,7 +20,6 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'aws-sdk-s3', require: false
-gem 'dotenv-rails'
 gem 'active_storage_validations'
 
 
@@ -31,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do
