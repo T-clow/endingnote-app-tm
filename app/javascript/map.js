@@ -4,17 +4,42 @@ document.addEventListener("turbo:render", function() {
     }
   });
 
-function initMap() {
-    const tower = { lat: 35.6586, lng: 139.7454 }; // 東京タワーを指定
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 18,
-      center: tower,
-    });
+  function initMap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
   
-    const marker = new google.maps.Marker({  // 一時的に古いMarkerを使用してみる
-      position: tower,
-      map: map,
-    });
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: userLocation
+        });
+  
+        google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+          document.getElementById('loading').style.display = 'none';
+        });
+  
+        const marker = new google.maps.Marker({
+          position: userLocation,
+          map: map
+        });
+  
+      }, function() {
+        handleLocationError(true, map, map.getCenter());
+      });
+    } else {
+      handleLocationError(false, map, map.getCenter());
+    }
   }
+  
+  function handleLocationError(browserHasGeolocation, map, pos) {
+    alert(browserHasGeolocation ?
+      'エラー: 位置情報サービスに失敗しました。' :
+      'エラー: お使いのブラウザでは位置情報サービスがサポートされていません。');
+    map.setCenter(pos);
+  }
+  
   window.initMap = initMap;
   
