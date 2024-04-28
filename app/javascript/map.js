@@ -3,7 +3,7 @@ document.addEventListener("turbo:render", function() {
       initMap();
     }
   });
-
+  
   function initMap() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -13,32 +13,64 @@ document.addEventListener("turbo:render", function() {
         };
   
         const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 18,
+          zoom: 12.5,
           center: userLocation
         });
   
-        google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
-          document.getElementById('loading').style.display = 'none';
-        });
+        const avatarUrl = document.getElementById('user-avatar').getAttribute('data-avatar-url');
   
-        const marker = new google.maps.Marker({
+        const userMarker = new google.maps.Marker({
           position: userLocation,
-          map: map
+          map: map,
+          icon: {
+            url: avatarUrl,
+            scaledSize: new google.maps.Size(40, 40)
+          }
         });
   
-      }, function() {
+        const service = new google.maps.places.PlacesService(map);
+        const request = {
+          location: userLocation,
+          radius: '10000',
+          type: ['funeral_home']
+        };
+  
+        service.nearbySearch(request, function(results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            results.forEach(function(place) {
+              createMarker(place, map);
+            });
+          }
+        });
+  
+      }, function(error) {
         handleLocationError(true, map, map.getCenter());
       });
     } else {
-      handleLocationError(false, map, map.getCenter());
+      handleLocationError(false, null, map.getCenter());
     }
+  }
+  
+  function createMarker(place, map) {
+    const iconUrl = document.getElementById('funeral-home-icon').getAttribute('data-icon-url');
+    
+    const placeMarker = new google.maps.Marker({
+      position: place.geometry.location,
+      map: map,
+      icon: {
+        url: iconUrl,
+        scaledSize: new google.maps.Size(30, 30)
+      }
+    });
   }
   
   function handleLocationError(browserHasGeolocation, map, pos) {
     alert(browserHasGeolocation ?
       'エラー: 位置情報サービスに失敗しました。' :
       'エラー: お使いのブラウザでは位置情報サービスがサポートされていません。');
-    map.setCenter(pos);
+    if (map) {
+      map.setCenter(pos);
+    }
   }
   
   window.initMap = initMap;
