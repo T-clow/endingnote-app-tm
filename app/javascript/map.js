@@ -66,7 +66,7 @@ function createMarker(place, map) {
 
   google.maps.event.addListener(placeMarker, 'click', () => {
     const placeId = place.place_id;
-    const url = `https://www.google.com/maps/place/?q=place_id:${placeId}`;
+    const url = `https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${placeId}`;
     window.open(url, '_blank');
   });
 }
