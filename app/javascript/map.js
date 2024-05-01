@@ -63,6 +63,12 @@ function createMarker(place, map) {
       scaledSize: new google.maps.Size(30, 30)
     }
   });
+
+  google.maps.event.addListener(placeMarker, 'click', () => {
+    const placeId = place.place_id;
+    const url = `https://www.google.com/maps/place/?q=place_id:${placeId}`;
+    window.open(url, '_blank');
+  });
 }
 
 function handleLocationError(browserHasGeolocation, map, pos) {

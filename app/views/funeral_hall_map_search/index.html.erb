@@ -16,7 +16,7 @@
         <div class="card-body">
           <% content_for :js do %>
             <%= javascript_import_module_tag "map" %>
-              <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" async defer></script>
+              <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=places&v=weekly"></script>
             <% end %>
           <div class="icon-description">
             <%= image_tag('map_icon_here.png', alt: '現在地', size: "40x40") %>
@@ -26,10 +26,14 @@
             <%= image_tag('funeral_home_icon.png', alt: '葬儀場', size: "40x40") %>
             <span>半径10キロ以内の葬儀場</span>
           </div>
-          <div class="form-group">
-            <input type="text" id="address-input" class="form-control" placeholder="住所を入力">
-            <button onclick="geocodeAddress()" class="btn btn-primary">マップを更新</button>
-          </div>
+          <%= form_with url: '#', local: true, method: :get, id: 'address-form' do |form| %>
+            <div class="form-group">
+              <%= form.text_field :address, id: 'address-input', class: 'form-control', placeholder: '住所を入力' %>
+              <%= button_tag type: 'button', class: 'btn btn-primary', onclick: 'geocodeAddress()' do %>
+                マップを更新
+              <% end %>
+            </div>
+          <% end %>
           <div id="map" style="height: 100vh; width: 100%;">
             <div id="loading" class="loading">
               <div class="spinner-border text-primary" role="status">
