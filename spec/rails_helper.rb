@@ -14,6 +14,9 @@ if ENV['CI'] == 'true'
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--window-size=1400,1400')
+    options.add_preference('profile.default_content_setting_values.geolocation', 1)
+    options.add_preference('profile.managed_default_content_settings.geolocation', 1)
+    options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
@@ -28,10 +31,13 @@ else
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--window-size=1400,1400')
+    options.add_preference('profile.default_content_setting_values.geolocation', 1)
+    options.add_preference('profile.managed_default_content_settings.geolocation', 1)
+    options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
-      url: "http://192.168.160.3:4444",
+      url: "http://192.168.240.3:4444",
       capabilities: options)
   end
   Capybara.javascript_driver = :selenium_remote_chrome

@@ -1,0 +1,54 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-20">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="mb-0">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag rails_blob_path(current_user.avatar), class: 'avatar-image' %>
+            <% else %>
+              <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
+            <% end %>
+              <%= current_user.username %> 様の葬儀屋MAP
+          </h1>
+        </div>
+        <div class="card-body">
+          <% content_for :js do %>
+            <%= javascript_import_module_tag "map" %>
+              <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=places&v=weekly"></script>
+            <% end %>
+          <div class="icon-description">
+            <%= image_tag('map_icon_here.png', alt: '現在地', size: "40x40") %>
+            <span>現在地</span>
+          </div>
+          <div class="icon-description">
+            <%= image_tag('funeral_home_icon.png', alt: '葬儀場', size: "40x40") %>
+            <span>半径10キロ以内の葬儀場</span>
+          </div>
+          <%= form_with url: '#', local: true, method: :get, id: 'address-form' do |form| %>
+            <div class="form-group">
+              <%= form.text_field :address, id: 'address-input', class: 'form-control', placeholder: '住所を入力' %>
+              <%= button_tag type: 'button', class: 'btn btn-primary', onclick: 'geocodeAddress()' do %>
+                マップを更新
+              <% end %>
+            </div>
+          <% end %>
+          <div id="map" style="height: 100vh; width: 100%;">
+            <div id="loading" class="loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <p class="loading-text">現在位置情報を読み込み中です...</p>
+            </div>
+          </div>
+          <div id="user-avatar" data-avatar-url="<%= image_url('map_icon_here.png') %>"></div>
+          <div id="funeral-home-icon" data-icon-url="<%= image_url('funeral_home_icon.png') %>"></div>
+          <div class="mt-4">
+            <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

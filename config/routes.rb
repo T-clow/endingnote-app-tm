@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'funeral_hall_map_search/index'
   devise_for :users, controllers: {
   registrations: 'registrations'
 }
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
     resources :will_videos, only: [:new, :create, :show, :edit, :destroy]
     resources :memorial_photos, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :funeral_hall_map_search, only: [:index]
   end
 end

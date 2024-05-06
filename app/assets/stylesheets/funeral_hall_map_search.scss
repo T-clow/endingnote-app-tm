@@ -1,0 +1,35 @@
+#map {
+    height: 100vh;
+    width: 100%;
+  }
+  
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    
+  }
+  
+  .loading-text {
+    text-align: center;
+    margin-top: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #000;
+  }
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#address-input {
+  margin-bottom: 10px;
+}
