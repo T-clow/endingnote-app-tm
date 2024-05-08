@@ -2,6 +2,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "map";
 import { Turbo } from "@hotwired/turbo-rails"
+
 Turbo.start()
 
 document.addEventListener("turbo:load", function() {
@@ -26,3 +27,18 @@ function toggleNavbar() {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     navbarCollapse.classList.toggle('show');
 }
+
+import { createApp } from "vue";
+import * as Controllers from "controllers/application";
+
+document.addEventListener("turbo:load", function() {
+  const App = createApp({
+    data() {
+      return {
+        message: 'Hello Vue'
+      }
+    }
+  });
+
+  App.mount("#vue-app");
+});

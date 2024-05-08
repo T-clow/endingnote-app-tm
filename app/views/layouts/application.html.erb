@@ -64,7 +64,9 @@
     <% flash.each do |key, value| %>
       <div class="flash <%= key %>"><%= value %></div>
     <% end %>
-    <%= yield %>
+    <div id="vue-app">
+      <%= yield %>
+    </div>
     <footer class="bg-dark text-white mt-4">
       <div class="container-fluid py-3">
         <div class="row">
