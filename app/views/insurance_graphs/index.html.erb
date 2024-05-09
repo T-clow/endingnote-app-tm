@@ -1,5 +1,11 @@
 <h1>InsuranceGraphs#index</h1>
 <p>Find me in app/views/insurance_graphs/index.html.erb</p>
-<div><P>下記にHelloVueと表示されるかのテストです</p>
+<p>下記にHelloVueと表示されるかのテストです</p>
+
+<!-- Vueのアプリケーションエレメント -->
+<div id="vue-app">
   {{ message }}
 </div>
+
+<!-- Chart.jsの棒グラフ用キャンバス -->
+<canvas id="myBarChart" width="400" height="100"></canvas>
