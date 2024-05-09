@@ -43,7 +43,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-5">
-        <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
+        <%= link_to (user_signed_in? ? user_insurance_graphs_path(current_user) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title">ご加入中の保険</h2>
@@ -78,7 +78,3 @@
     </div>
   </main>
 </section>
-
-<div><P>下記にHelloVueと表示されるかのテストです</p>
-  {{ message }}
-</div>
