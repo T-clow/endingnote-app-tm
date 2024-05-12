@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'insurance_graphs/index'
-  get 'funeral_hall_map_search/index'
   devise_for :users, controllers: {
   registrations: 'registrations'
 }
@@ -16,5 +14,6 @@ Rails.application.routes.draw do
     resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :funeral_hall_map_search, only: [:index]
     resources :insurance_graphs, only: [:index]
+    resource :birthday, only: [:new, :create, :edit, :update, :destroy]
   end
 end

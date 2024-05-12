@@ -1,0 +1,43 @@
+<% if @birthday.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@birthday.errors.count, "error") %> prevented this birthday from being saved:</h2>
+    <ul>
+      <% @birthday.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>生年月日を編集</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with model: [@user, @birthday], url: user_birthday_path(@user), local: true do |form| %>
+            <div class="form-group">
+              <%= form.label :date_of_birth, '変更する生年月日をご入力ください' %><br>
+              <%= raw sprintf(
+                    form.date_select(
+                      :date_of_birth,
+                      use_month_numbers: true,
+                      start_year: 1900,
+                      end_year: Time.zone.today.year,
+                      default: { year: 1980 },
+                      date_separator: '%s'
+                    ),
+                    '年 ', '月 ') + '日' %>
+              </div>
+            <div class="actions mt-4">
+              <%= form.submit "更新する", class: "btn btn-primary w-100" %>
+            </div>
+          <% end %>
+          <%= button_to '削除', user_birthday_path(@user), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger w-100 mt-3" %>
+          <%= link_to '前の画面に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

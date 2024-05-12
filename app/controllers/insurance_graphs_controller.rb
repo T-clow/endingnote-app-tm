@@ -2,6 +2,7 @@ class InsuranceGraphsController < ApplicationController
   before_action :set_user
 
   def index
+    @user_age = current_user.birthday&.age
   end
 
   private

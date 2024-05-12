@@ -10,10 +10,15 @@
             <% else %>
               <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
             <% end %>
-              <%= current_user.username %> 様の保険金額
+              <%= current_user.username %> 様
+              <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: 'text-decoration-none' %>の保険金額
           </h1>
         </div>
         <div class="card-body">
+          <div class="form-group mb-3">
+            <strong>生年月日:</strong>
+            <%= current_user.birthday.date_of_birth %>
+          </div>
           <div class="chart-container">
             <canvas id="myBarChart"></canvas>
           </div>

@@ -43,7 +43,7 @@ document.addEventListener("turbo:load", () => {
             text: '保険金額（万円）'
           },
           ticks: {
-            callback: (value) => `${value} 万円`
+            callback: (value) => `${value}`
           }
         },
         x: {
