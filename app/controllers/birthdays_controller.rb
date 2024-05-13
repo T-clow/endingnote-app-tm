@@ -21,7 +21,7 @@ class BirthdaysController < ApplicationController
 
   def update
     if @birthday.update(birthday_params)
-      redirect_to user_birthday_path(@user), notice: '生年月日が更新されました'
+      redirect_to user_insurance_graphs_path(@user), notice: '生年月日が更新されました'
     else
       render :edit, status: :unprocessable_entity
     end
