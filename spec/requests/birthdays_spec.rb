@@ -35,10 +35,10 @@ RSpec.describe "Birthdays", type: :request do
   describe "PATCH /update" do
     it "生年月日が更新されること" do
       birthday = Birthday.create! valid_attributes.merge(user: user)
-      updated_date = { date_of_birth: Date.new(1958, 11, 04) }
+      updated_date = { date_of_birth: Date.new(1958, 11, 4) }
       patch user_birthday_path(user, birthday), params: { birthday: updated_date }
       birthday.reload
-      expect(birthday.date_of_birth).to eq(Date.new(1958, 11, 04))
+      expect(birthday.date_of_birth).to eq(Date.new(1958, 11, 4))
       expect(response).to redirect_to(user_insurance_graphs_path(user))
     end
   end
