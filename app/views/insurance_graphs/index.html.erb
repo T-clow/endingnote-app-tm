@@ -19,10 +19,9 @@
             <strong>生年月日:</strong>
             <%= current_user.birthday.date_of_birth %>
           </div>
-          <div class="chart-container">
+          <div class="chart-container" data-age="<%= current_user.birthday.age %>">
             <canvas id="myBarChart"></canvas>
           </div>
-          <script type="module" src="bar_chart.js"></script>
         <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-3" %>
         </div>
       </div>

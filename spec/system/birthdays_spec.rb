@@ -25,9 +25,9 @@ RSpec.describe "生年月日の管理", type: :system, js: true do
 
     it "ユーザーが生年月日を更新できること" do
       visit edit_user_birthday_path(user, birthday)
-      select '1990', from: 'birthday_date_of_birth_1i' # 年を選択
-      select '9', from: 'birthday_date_of_birth_2i' # 月を選択
-      select '10', from: 'birthday_date_of_birth_3i' # 日を選択
+      select '1990', from: 'birthday_date_of_birth_1i'
+      select '9', from: 'birthday_date_of_birth_2i'
+      select '10', from: 'birthday_date_of_birth_3i'
       click_button '更新する'
 
       expect(page).to have_content('生年月日が更新されました')
