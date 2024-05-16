@@ -1,0 +1,59 @@
+class InsurancePolicy < ApplicationRecord
+  belongs_to :user
+  before_save :convert_amount_to_yen
+
+  validates :insurance_company, :insurance_type, :insurance_amount, :insurance_period, presence: true
+  validates :insurance_company, :insurance_type, length: { maximum: 20, message: "は20文字以内で入力してください" }
+  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true }
+  validates :policy_number, length: { maximum: 20 }, format: { with: /\A[0-9A-Za-zァ-ンヴー]+\z/, message: "は半角英数字及びカタカナで入力してください" }, allow_blank: true
+  validate :insurance_period_must_be_appropriate
+  validate :insurance_period_within_limit, unless: -> { insurance_period == 100 }
+
+  INSURANCE_COMPANIES = [
+    'アクサ生命保険株式会社', '朝日生命保険相互会社', 'アフラック生命保険株式会社',
+    'イオン・アリアンツ生命保険株式会社', 'SBI生命保険株式会社', 'エヌエヌ生命保険株式会社',
+    'FWD生命保険株式会社', 'オリックス生命保険株式会社', 'ジブラルタ生命保険株式会社',
+    '住友生命保険相互会社', 'ソニー生命保険株式会社', 'SOMPOひまわり生命保険株式会社',
+    '第一生命保険株式会社', '第一フロンティア生命保険株式会社', '大樹生命保険株式会社',
+    'チューリッヒ生命保険株式会社', 'T&Dフィナンシャル生命保険株式会社', '東京海上日動あんしん生命保険株式会社',
+    'なないろ生命保険株式会社', 'ニッセイ・ウェルス生命保険株式会社', '日本生命保険相互会社',
+    'ネオファースト生命保険株式会社', 'はなさく生命保険株式会社', 'マニュライフ生命保険株式会社',
+    '三井住友海上あいおい生命保険株式会社', '明治安田生命保険相互会社', 'メットライフ生命保険株式会社',
+    'メディケア生命保険株式会社', 'ライフネット生命保険株式会社', '都道府県民共済', 'こくみん共済(旧全労災)',
+    'JA共済(農協)', 'JF共済(漁協)', 'COAP共済', '自治労共済', '公務員共済', '教職員共済',
+  ].freeze
+
+  INSURANCE_TYPES = [
+    '終身保険', '定期保険', '養老保険', '医療保険', 'がん保険', '介護保険', '学資保険',
+  ].freeze
+
+  def self.insurance_amount_options
+    (100..5000).step(100).map { |amount| [amount.to_s + '万円', amount] }
+  end
+
+  def self.insurance_period_options(user_age)
+    options = (user_age..95).step(5).map { |year| [year.to_s, year] }
+    options.append(['終身', 100])
+    options
+  end
+
+  private
+
+  def convert_amount_to_yen
+    self.insurance_amount *= 10000
+  end
+
+  def insurance_period_must_be_appropriate
+    Rails.logger.debug "Insurance Period: #{insurance_period}"
+    return if insurance_period == 100
+    if user && insurance_period && insurance_period < user.birthday.age
+      errors.add(:insurance_period, "は現在の年齢以上である必要があります")
+    end
+  end
+
+  def insurance_period_within_limit
+    if insurance_period.present? && insurance_period > 99
+      errors.add(:insurance_period, "は99歳以下である必要があります")
+    end
+  end
+end

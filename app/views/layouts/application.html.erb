@@ -9,6 +9,7 @@
     <%= javascript_importmap_tags %>
     <%= yield(:js) %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -29,7 +30,7 @@
               <%= link_to "ご遺影", (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ご加入中の保険", (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "nav-link" %>
+              <%= link_to "ご加入中の保険", (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "nav-link", data: { turbo: false }%>
             </li>
             <li class="nav-item">
               <%= link_to "葬儀場MAP", (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: "nav-link" %>

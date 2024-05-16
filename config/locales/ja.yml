@@ -4,6 +4,7 @@ ja:
       user: "ユーザ"
       funeral_preference: "葬儀設定"
       memorial_photo: "遺影画像"
+      insurance_policy: "保険契約"
     attributes:
       user:
         email: "メールアドレス"
@@ -21,6 +22,12 @@ ja:
       memorial_photo:
         photo: "画像"
         comment: "コメント"
+      insurance_policy:  # 保険契約の属性追加
+        insurance_company: "保険会社"
+        insurance_type: "保険の種類"
+        insurance_amount: "保険金額"
+        insurance_period: "保険期間"
+        policy_number: "証券番号"
     errors:
       models:
         user:
@@ -53,3 +60,14 @@ ja:
           attributes:
             photo:
               blank: "が選択されていません"
+        insurance_policy:
+          attributes:
+            insurance_company:
+              blank: "を入力してください"
+            insurance_type:
+              blank: "を入力してください"
+            insurance_amount:
+              blank: "を入力してください"
+              not_a_number: "は数値で入力してください"
+            insurance_period:
+              blank: "を入力してください"

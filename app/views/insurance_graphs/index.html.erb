@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-20">
@@ -21,6 +20,51 @@
           </div>
           <div class="chart-container" data-age="<%= current_user.birthday.age %>">
             <canvas id="myBarChart"></canvas>
+          </div>
+          <div class="card-header">
+            <h2>保険契約一覧</h2>
+          </div>
+          <div class="card-body">
+            <% if @insurance_policies.empty? %>
+              <p>保険の登録がありません。</p>
+            <% else %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>保険会社</th>
+                    <th>保険種類</th>
+                    <th>保険金額</th>
+                    <th>保険期間</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @insurance_policies.each do |policy| %>
+                    <tr>
+                      <td><%= policy.insurance_company %></td>
+                      <td><%= policy.insurance_type %></td>
+                      <td><%= number_with_delimiter(policy.insurance_amount/10000) %>万円</td>
+                      <td><%= policy.insurance_period == 100 ? "終身" : policy.insurance_period.to_s %></td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bars"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><%= link_to '詳細', user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
+                            <li><%= link_to '編集', edit_user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
+                            <li>
+                              <%= button_to '削除', user_insurance_policy_path(@user, policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "dropdown-item" %>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+            <%= link_to '新しい保険契約を追加', new_user_insurance_policy_path(@user), class: 'btn btn-success' %>
           </div>
         <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-3" %>
         </div>

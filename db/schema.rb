@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_10_054538) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_15_062035) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -60,6 +60,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_10_054538) do
     t.index ["user_id"], name: "index_funeral_preferences_on_user_id"
   end
 
+  create_table "insurance_policies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "insurance_company"
+    t.string "insurance_type"
+    t.integer "insurance_amount"
+    t.integer "insurance_period"
+    t.string "policy_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_insurance_policies_on_user_id"
+  end
+
   create_table "memorial_photos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "visible_to"
@@ -96,6 +108,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_10_054538) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "birthdays", "users"
   add_foreign_key "funeral_preferences", "users"
+  add_foreign_key "insurance_policies", "users"
   add_foreign_key "memorial_photos", "users"
   add_foreign_key "will_videos", "users"
 end

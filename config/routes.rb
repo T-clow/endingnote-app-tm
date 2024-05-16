@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     resources :funeral_hall_map_search, only: [:index]
     resources :insurance_graphs, only: [:index]
     resource :birthday, only: [:new, :create, :edit, :update, :destroy]
+    resources :insurance_policies, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 end

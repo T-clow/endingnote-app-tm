@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>保険契約詳細</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>保険会社:</strong> <%= @insurance_policy.insurance_company %></p>
+          <p><strong>保険の種類:</strong> <%= @insurance_policy.insurance_type %></p>
+          <p><strong>保険金額:</strong> <%= number_with_delimiter(@insurance_policy.insurance_amount/10000) %>万円</p>
+          <p><strong>保険期間:</strong> <%= @insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period.to_s %></p>
+          <p><strong>証券番号:</strong> <%= @insurance_policy.policy_number.present? ? @insurance_policy.policy_number : "未登録" %></p>
+          <%= link_to '編集', edit_user_insurance_policy_path(@user, @insurance_policy), class: 'btn btn-primary' %>
+          <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger" %>
+          <%= link_to '一覧に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary", data: { turbo: false }  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

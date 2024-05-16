@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :insurance_policies, dependent: :destroy
   has_one :birthday, dependent: :destroy
   accepts_nested_attributes_for :birthday
   has_many :memorial_photos

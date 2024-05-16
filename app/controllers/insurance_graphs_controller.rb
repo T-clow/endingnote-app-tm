@@ -3,6 +3,7 @@ class InsuranceGraphsController < ApplicationController
 
   def index
     @user_age = current_user.birthday&.age
+    @insurance_policies = @user.insurance_policies
   end
 
   private
