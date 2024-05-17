@@ -10,7 +10,7 @@
           <p><strong>保険会社:</strong> <%= @insurance_policy.insurance_company %></p>
           <p><strong>保険の種類:</strong> <%= @insurance_policy.insurance_type %></p>
           <p><strong>保険金額:</strong> <%= number_with_delimiter(@insurance_policy.insurance_amount/10000) %>万円</p>
-          <p><strong>保険期間:</strong> <%= @insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period.to_s %>歳</p>
+          <p><strong>保険期間:</strong> <%= @insurance_policy.insurance_period == 100 ? "終身" : "#{@insurance_policy.insurance_period}歳" %></p>
           <p><strong>証券画像:</strong></p>
           <% if @insurance_policy.policy_image.attached? %>
             <%= image_tag @insurance_policy.policy_image, class: "img-fluid" %>

@@ -17,7 +17,7 @@ class InsurancePoliciesController < ApplicationController
     if @insurance_policy.save
       redirect_to user_insurance_graphs_path(current_user), notice: '保険証券が登録されました。'
     else
-      flash[:alert] = '保険証券の登録に失敗しました。'
+      flash.now[:alert] = '保険証券の登録に失敗しました。'
       render :new, status: :unprocessable_entity
     end
   end
@@ -26,7 +26,7 @@ class InsurancePoliciesController < ApplicationController
     if @insurance_policy.update(insurance_policy_params)
       redirect_to user_insurance_graphs_path(current_user), notice: '保険証券が更新されました。'
     else
-      flash[:alert] = '保険証券の更新に失敗しました。'
+      flash.now[:alert] = '保険証券の更新に失敗しました。'
       render :edit, status: :unprocessable_entity
     end
   end

@@ -44,7 +44,7 @@
                       <td><%= policy.insurance_company %></td>
                       <td><%= policy.insurance_type %></td>
                       <td><%= number_with_delimiter(policy.insurance_amount/10000) %>万円</td>
-                      <td><%= policy.insurance_period == 100 ? "終身" : policy.insurance_period.to_s %></td>
+                      <td><%= policy.insurance_period == 100 ? "終身" : "#{policy.insurance_period}歳" %></td>
                       <td>
                         <div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
