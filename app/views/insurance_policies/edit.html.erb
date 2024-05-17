@@ -52,7 +52,7 @@
               </datalist>
             </div>
             <div class="actions mt-4">
-              <%= form.submit "更新する", class: "btn btn-primary w-100" %>
+              <%= form.submit "登録する", class: "btn btn-primary w-100", data: { turbo: "false" } %>
             </div>
           <% end %>
           <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger" %>

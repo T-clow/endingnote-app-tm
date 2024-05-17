@@ -12,8 +12,8 @@
           <p><strong>保険期間:</strong> <%= @insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period.to_s %></p>
           <p><strong>証券番号:</strong> <%= @insurance_policy.policy_number.present? ? @insurance_policy.policy_number : "未登録" %></p>
           <%= link_to '編集', edit_user_insurance_policy_path(@user, @insurance_policy), class: 'btn btn-primary' %>
-          <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger" %>
-          <%= link_to '一覧に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary", data: { turbo: false }  %>
+          <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？", turbo: "false" } }, class: "btn btn-danger" %>
+          <%= link_to '一覧に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary" %>
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@
               </datalist>
             </div>
             <div class="actions mt-4">
-              <%= form.submit "登録する", class: "btn btn-primary w-100" %>
+              <%= form.submit "登録する", class: "btn btn-primary w-100", data: { turbo: "false" } %>
             </div>
           <% end %>
           <%= link_to '前の画面に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false }  %>

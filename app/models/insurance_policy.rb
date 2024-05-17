@@ -4,23 +4,23 @@ class InsurancePolicy < ApplicationRecord
 
   validates :insurance_company, :insurance_type, :insurance_amount, :insurance_period, presence: true
   validates :insurance_company, :insurance_type, length: { maximum: 20, message: "は20文字以内で入力してください" }
-  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true }
+  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true, less_than_or_equal_to: 10000, message: "は1億円以下である必要があります" }
   validates :policy_number, length: { maximum: 20 }, format: { with: /\A[0-9A-Za-zァ-ンヴー]+\z/, message: "は半角英数字及びカタカナで入力してください" }, allow_blank: true
   validate :insurance_period_must_be_appropriate
   validate :insurance_period_within_limit, unless: -> { insurance_period == 100 }
 
   INSURANCE_COMPANIES = [
-    'アクサ生命保険株式会社', '朝日生命保険相互会社', 'アフラック生命保険株式会社',
-    'イオン・アリアンツ生命保険株式会社', 'SBI生命保険株式会社', 'エヌエヌ生命保険株式会社',
-    'FWD生命保険株式会社', 'オリックス生命保険株式会社', 'ジブラルタ生命保険株式会社',
-    '住友生命保険相互会社', 'ソニー生命保険株式会社', 'SOMPOひまわり生命保険株式会社',
-    '第一生命保険株式会社', '第一フロンティア生命保険株式会社', '大樹生命保険株式会社',
-    'チューリッヒ生命保険株式会社', 'T&Dフィナンシャル生命保険株式会社', '東京海上日動あんしん生命保険株式会社',
-    'なないろ生命保険株式会社', 'ニッセイ・ウェルス生命保険株式会社', '日本生命保険相互会社',
-    'ネオファースト生命保険株式会社', 'はなさく生命保険株式会社', 'マニュライフ生命保険株式会社',
-    '三井住友海上あいおい生命保険株式会社', '明治安田生命保険相互会社', 'メットライフ生命保険株式会社',
-    'メディケア生命保険株式会社', 'ライフネット生命保険株式会社', '都道府県民共済', 'こくみん共済(旧全労災)',
-    'JA共済(農協)', 'JF共済(漁協)', 'COAP共済', '自治労共済', '公務員共済', '教職員共済',
+    'アクサ生命', '朝日生命', 'アフラック生命',
+    'イオン・アリアンツ生命', 'SBI生命', 'エヌエヌ生命',
+    'FWD生命', 'オリックス生命', 'ジブラルタ生命',
+    '住友生命相互会社', 'ソニー生命', 'SOMPOひまわり生命',
+    '第一生命', '第一フロンティア生命', '大樹生命',
+    'チューリッヒ生命', 'T&Dフィナンシャル生命', '東京海上日動あんしん生命',
+    'なないろ生命', 'ニッセイ・ウェルス生命', '日本生命',
+    'ネオファースト生命', 'はなさく生命', '富国生命', 'マニュライフ生命',
+    '三井住友海上あいおい生命', '明治安田生命', 'メットライフ生命',
+    'メディケア生命', 'ライフネット生命', '楽天生命', '都道府県民共済',
+    'こくみん共済(旧全労災)', 'JA共済(農協)', 'JF共済(漁協)', 'COAP共済', '自治労共済', '公務員共済', '教職員共済',
   ].freeze
 
   INSURANCE_TYPES = [
