@@ -1,13 +1,16 @@
 class InsurancePolicy < ApplicationRecord
   belongs_to :user
+  has_one_attached :policy_image
   before_save :convert_amount_to_yen
 
   validates :insurance_company, :insurance_type, :insurance_amount, :insurance_period, presence: true
   validates :insurance_company, :insurance_type, length: { maximum: 20, message: "は20文字以内で入力してください" }
-  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true, less_than_or_equal_to: 10000, message: "は1億円以下である必要があります" }
+  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true, less_than_or_equal_to: 10000, message: "は1万円〜1億円以下でご設定ください" }
   validates :policy_number, length: { maximum: 20 }, format: { with: /\A[0-9A-Za-zァ-ンヴー]+\z/, message: "は半角英数字及びカタカナで入力してください" }, allow_blank: true
   validate :insurance_period_must_be_appropriate
   validate :insurance_period_within_limit, unless: -> { insurance_period == 100 }
+  validate :acceptable_image, if: -> { policy_image.attached? }
+  validates :note, length: { maximum: 100, message: "は100文字以内で入力してください" }
 
   INSURANCE_COMPANIES = [
     'アクサ生命', '朝日生命', 'アフラック生命',
@@ -55,6 +58,16 @@ class InsurancePolicy < ApplicationRecord
   def insurance_period_within_limit
     if insurance_period.present? && insurance_period > 99
       errors.add(:insurance_period, "は99歳以下である必要があります")
+    end
+  end
+
+  def acceptable_image
+    unless policy_image.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:policy_image, 'はJPEGまたはPNG形式である必要があります')
+    end
+
+    if policy_image.byte_size > 20.megabytes
+      errors.add(:policy_image, 'のサイズは20MB以下である必要があります')
     end
   end
 end

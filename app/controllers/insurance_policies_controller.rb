@@ -47,7 +47,10 @@ class InsurancePoliciesController < ApplicationController
   end
 
   def insurance_policy_params
-    modified_params = params.require(:insurance_policy).permit(:insurance_company, :insurance_type, :insurance_amount, :insurance_period, :policy_number)
+    modified_params = params.require(:insurance_policy).permit(
+      :insurance_company, :insurance_type, :insurance_amount,
+      :insurance_period, :policy_number, :note, :policy_image
+    )
     modified_params[:insurance_period] = "100" if modified_params[:insurance_period] == "終身"
     modified_params
   end

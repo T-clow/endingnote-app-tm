@@ -22,12 +22,14 @@ ja:
       memorial_photo:
         photo: "画像"
         comment: "コメント"
-      insurance_policy:  # 保険契約の属性追加
+      insurance_policy:
         insurance_company: "保険会社"
         insurance_type: "保険の種類"
         insurance_amount: "保険金額"
         insurance_period: "保険期間"
         policy_number: "証券番号"
+        policy_image: "証券画像"
+        note: "備考"
     errors:
       models:
         user:

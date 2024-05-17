@@ -44,12 +44,20 @@
             </div>
             <div class="form-group">
               <%= form.label :insurance_period, '保険期間（年齢で入力または終身を選択）' %>
-              <%= form.text_field :insurance_period, list: "insurance_period_options", class: "form-control" %>
+              <%= form.text_field :insurance_period, value: (@insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period), list: "insurance_period_options", class: "form-control" %>
               <datalist id="insurance_period_options">
                 <% InsurancePolicy.insurance_period_options(@user.birthday.age).each do |option, value| %>
                   <option value="<%= option %>"><%= option %></option>
                 <% end %>
               </datalist>
+            </div>
+            <div class="form-group">
+              <%= form.label :policy_image, "証券画像" %>
+              <%= form.file_field :policy_image, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :note, "備考" %>
+              <%= form.text_area :note, class: 'form-control' %>
             </div>
             <div class="actions mt-4">
               <%= form.submit "登録する", class: "btn btn-primary w-100", data: { turbo: "false" } %>
