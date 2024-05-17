@@ -32,7 +32,8 @@ class InsurancePolicy < ApplicationRecord
   end
 
   def self.insurance_period_options(user_age)
-    options = (user_age..95).step(5).map { |year| [year.to_s, year] }
+    start_age = (user_age % 5 == 0) ? user_age : (user_age / 5 + 1) * 5
+    options = (start_age..95).step(5).map { |year| [year.to_s, year] }
     options.append(['終身', 100])
     options
   end
