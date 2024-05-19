@@ -53,7 +53,6 @@
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><%= link_to '詳細', user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
                             <li><%= link_to '編集', edit_user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
-                            <li><%= button_to '削除', user_insurance_policy_path(@user, policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？", turbo: "false" } }, class: "dropdown-item" %></li>
                           </ul>
                         </div>
                       </td>
