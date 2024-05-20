@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
               <%= form.label :insurance_amount, '保険金額（万円）' %>
-              <%= form.text_field :insurance_amount, list: "insurance_amount_options", class: "form-control" %>
+              <%= form.text_field :insurance_amount, list: "insurance_amount_options", value: @insurance_policy.insurance_amount.present? ? @insurance_policy.insurance_amount / 10000 : "", class: "form-control" %>
               <datalist id="insurance_amount_options">
                 <% InsurancePolicy.insurance_amount_options.each do |option, value| %>
                   <option value="<%= value %>"></option>
