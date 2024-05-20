@@ -56,8 +56,15 @@
                 <% end %>
               </datalist>
             </div>
+            <% if @insurance_policy.policy_image.attached? %>
+              <p>現在登録中の証券画像</p>
+              <%= image_tag @insurance_policy.policy_image, class: "img-fluid" %>
+              <p><%= @insurance_policy.policy_image.filename.to_s %></p>
+            <% else %>
+              <p>証券画像が登録されてません</p>
+            <% end %>
             <div class="form-group">
-              <%= form.label :policy_image, "証券画像" %>
+              <%= form.label :policy_image, "新しい証券画像" %>
               <%= form.file_field :policy_image, class: 'form-control' %>
             </div>
             <div class="form-group">

@@ -14,12 +14,13 @@
           <p><strong>証券画像:</strong></p>
           <% if @insurance_policy.policy_image.attached? %>
             <%= image_tag @insurance_policy.policy_image, class: "img-fluid" %>
+            <p><%= @insurance_policy.policy_image.filename.to_s %></p>
           <% else %>
             <p>画像はありません。</p>
           <% end %>
           <p><strong>備考:</strong> <%= @insurance_policy.note.present? ? @insurance_policy.note : "備考はありません" %></p>
           <%= link_to '編集', edit_user_insurance_policy_path(@user, @insurance_policy), class: 'btn btn-primary' %>
-          <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？", turbo: "false" } }, class: "btn btn-danger mt-3 w-100" %>
+          <%= button_to '削除', user_insurance_policy_path(@user, @insurance_policy), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger mt-3 w-100" %>
           <%= link_to '一覧に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary mt-3 w-100", data: { turbo: false } %>
         </div>
       </div>
