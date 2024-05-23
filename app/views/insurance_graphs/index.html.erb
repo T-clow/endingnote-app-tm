@@ -25,7 +25,7 @@
               <%= label_tag :age, "年齢を入力してください" %>
               <%= number_field_tag :age, nil %>
             </div>
-            <%= submit_tag "計算" %>
+            <%= submit_tag "計算", data: { turbo: false } %>
           <% end %>
           <% if @age.present? %>
           <% if @total_amount > 0 %>
