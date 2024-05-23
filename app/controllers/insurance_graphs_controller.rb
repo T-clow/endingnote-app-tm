@@ -1,4 +1,5 @@
 class InsuranceGraphsController < ApplicationController
+  include InsuranceHelper
   before_action :set_user
 
   def index
@@ -26,8 +27,6 @@ class InsuranceGraphsController < ApplicationController
 
       @insurance_policies = @user.insurance_policies
       @total_amount = calculate_total_amount(@insurance_policies, @age)
-
-      # 計算結果をセッションに保存し、インデックスにリダイレクト
       session[:age] = @age
       session[:total_amount] = @total_amount
       redirect_to user_insurance_graphs_path(@user)
@@ -37,14 +36,6 @@ class InsuranceGraphsController < ApplicationController
   end
 
   private
-
-  def calculate_total_amount(insurance_policies, age)
-    total_amount = 0
-    insurance_policies.each do |policy|
-      total_amount += policy.insurance_amount if policy.insurance_period >= age
-    end
-    total_amount
-  end
 
   def set_user
     @user = User.find_by(id: params[:user_id])
