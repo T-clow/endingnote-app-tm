@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     resources :memorial_photos, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :funeral_preferences, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :funeral_hall_map_search, only: [:index]
-    resources :insurance_graphs, only: [:index]
     resource :birthday, only: [:new, :create, :edit, :update, :destroy]
     resources :insurance_policies, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :insurance_graphs, only: [:index] do
+      collection do
+        post 'calculate_insurance_amount_by_age'
+      end
+    end
   end
 end

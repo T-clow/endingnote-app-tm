@@ -6,7 +6,7 @@ class InsurancePolicy < ApplicationRecord
 
   validates :insurance_company, :insurance_type, :insurance_amount, :insurance_period, presence: true
   validates :insurance_company, :insurance_type, length: { maximum: 20, message: "は20文字以内で入力してください" }
-  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true, less_than_or_equal_to: 100_000_000, message: "は1万円〜1億円以下でご設定ください" }
+  validates :insurance_amount, numericality: { greater_than: 0, only_integer: true, message: "は1万円以上で入力してください" }
   validates :policy_number, length: { maximum: 20 }, format: { with: /\A[0-9A-Za-zァ-ンヴー]+\z/, message: "は半角英数字及びカタカナで入力してください" }, allow_blank: true
   validate :insurance_period_must_be_appropriate
   validate :insurance_period_within_limit, unless: -> { insurance_period == 100 }
@@ -45,8 +45,10 @@ class InsurancePolicy < ApplicationRecord
   private
 
   def convert_amount_to_yen
-    if insurance_amount.present? && insurance_amount < 100_000
+    if insurance_amount.present? && insurance_amount <= 10_000
       self.insurance_amount *= 10_000
+    elsif insurance_amount.present? && insurance_amount > 10_000
+      errors.add(:insurance_amount, "は1億円以下で入力してください")
     end
   end
 
