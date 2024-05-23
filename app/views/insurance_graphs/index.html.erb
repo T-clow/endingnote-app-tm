@@ -28,7 +28,11 @@
             <%= submit_tag "計算" %>
           <% end %>
           <% if @age.present? %>
-            <h2><%= current_user.username %>様が<%= @age %>歳の時にお亡くなりになると<%= @total_amount / 10000 %>万円家族に渡せます</h2>
+          <% if @total_amount > 0 %>
+              <h2><%= current_user.username %>様が<%= @age %>歳の時にお亡くなりになると<%= @total_amount / 10000 %>万円家族に遺せます</h2>
+            <% else %>
+              <h2><%= current_user.username %>様が<%= @age %>歳の時にお亡くなりになられても遺せるお金はありません</h2>
+            <% end %>
           <% end %>
         </div>
           <div class="chart-container" data-age="<%= current_user.birthday.age %>">
