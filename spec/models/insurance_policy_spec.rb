@@ -36,13 +36,13 @@ RSpec.describe InsurancePolicy, type: :model do
     it '保険金額が1万円以上であること' do
       insurance_policy.insurance_amount = 0
       expect(insurance_policy).not_to be_valid
-      expect(insurance_policy.errors[:insurance_amount]).to include("は1万円〜1億円以下でご設定ください")
+      expect(insurance_policy.errors[:insurance_amount]).to include("は1万円以上で入力してください")
     end
 
     it '保険金額が1億円以下であること' do
-      insurance_policy.insurance_amount = 1_000_000_000
+      insurance_policy.insurance_amount = 10_001
       expect(insurance_policy).not_to be_valid
-      expect(insurance_policy.errors[:insurance_amount]).to include("は1万円〜1億円以下でご設定ください")
+      expect(insurance_policy.errors[:insurance_amount]).to include("は1億円以下で入力してください")
     end
 
     it '保険会社の名前が20文字以内であること' do
