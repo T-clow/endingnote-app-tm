@@ -35,7 +35,7 @@
             <% end %>
           <% end %>
         </div>
-          <div class="chart-container" data-age="<%= current_user.birthday.age %>">
+          <div class="chart-container" data-age="<%= current_user.birthday.age %>" data-insurance-amounts="<%= @insurance_amounts.to_json %>">
             <canvas id="myBarChart"></canvas>
           </div>
           <div class="card-header">
