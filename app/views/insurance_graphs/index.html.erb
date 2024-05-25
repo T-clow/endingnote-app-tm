@@ -38,7 +38,7 @@
           <% end %>
         </div>
         <div class="chart-container" data-age="<%= current_user.birthday.age %>" data-insurance-amounts="<%= @insurance_amounts.to_json %>">
-          <canvas id="myBarChart"></canvas>
+          <canvas id="myBarChart"m-3></canvas>
         </div>
         <div class="card-header">
           <h2>保険契約一覧</h2>
@@ -102,7 +102,9 @@
           <% end %>
           <%= link_to '新しい保険契約を追加', new_user_insurance_policy_path(@user), class: 'btn btn-success w-100' %>
         </div>
-        <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-1" %>
+        <div class="m-3">
+          <%= link_to "前の画面に戻る", "/", class: "btn btn-secondary w-100 mt-2" %>
+        </div>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ class InsuranceGraphsController < ApplicationController
   def index
     @user_age = @user.birthday&.age
     @insurance_policies = @user.insurance_policies
-    @insurance_amounts = calculate_insurance_amounts_by_age(@insurance_policies, @user_age)
+    @insurance_amounts = calculate_insurance_amounts_for_graph(@insurance_policies, @user_age)
 
     if session[:age].present?
       @age = session.delete(:age)
