@@ -42,7 +42,7 @@ document.addEventListener("turbo:load", () => {
               text: '保険金額（円）'
             },
             ticks: {
-              callback: (value) => `${value / 10000}万円`
+              callback: (value) => `${value / 10000}万`
             }
           },
           x: {
@@ -61,7 +61,6 @@ document.addEventListener("turbo:load", () => {
         }
       };
 
-      // すべての保険金額が0の場合の処理
       if (insuranceAmounts.every(amount => amount === 0)) {
         data.labels = ['0'];
         data.datasets[0].data = [0];
