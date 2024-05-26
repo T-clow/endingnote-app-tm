@@ -10,6 +10,28 @@
   <main class="container">
     <div class="row">
       <div class="col-md-4 mb-5">
+        <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">ご加入中の保険</h2>
+              <p class="card-text">今亡くなったらいくら残せるかがわかります。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
+        <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">葬儀場MAP</h2>
+              <p class="card-text">お住まいの近くの葬儀屋さんを探せます。</p>
+              <span class="btn btn-primary">詳細</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4 mb-5">
         <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body">
@@ -37,28 +59,6 @@
             <div class="card-body">
               <h2 class="card-title">ご遺影</h2>
               <p class="card-text">永遠の思い出、お気に入りの一枚を遺影で残せます。</p>
-              <span class="btn btn-primary">詳細</span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-md-4 mb-5">
-        <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">ご加入中の保険</h2>
-              <p class="card-text">今亡くなったらいくら残せるかがわかります。</p>
-              <span class="btn btn-primary">詳細</span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-md-4 mb-5">
-        <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: 'text-decoration-none' do %>
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">葬儀場MAP</h2>
-              <p class="card-text">お住まいの近くの葬儀屋さんを探せます。</p>
               <span class="btn btn-primary">詳細</span>
             </div>
           </div>
