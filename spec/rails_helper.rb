@@ -37,7 +37,7 @@ else
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
-      url: "http://192.168.240.3:4444",
+      url: "http://172.28.0.3:4444",
       capabilities: options)
   end
   Capybara.javascript_driver = :selenium_remote_chrome
@@ -58,6 +58,8 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Warden::Test::Helpers
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include ActionView::Helpers::NumberHelper
 
   config.fixture_paths = [Rails.root.join('spec/fixtures')]
   config.use_transactional_fixtures = true
