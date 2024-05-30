@@ -21,4 +21,10 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :contacts, only: [:index, :new, :create] do
+    collection do
+      post 'confirm'
+      post 'done'
+    end
+  end
 end
