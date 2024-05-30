@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
 
   def send_mail(contact)
     @contact = contact
-    mail(from: contact.email, to: ENV['MAIL_ADDRESS'], subject: 'エンディングノートよりより問い合わせが届きました') do |format|
+    mail(from: contact.email, to: ENV['MAIL_ADDRESS'], subject: 'エンディングノートより問い合わせが届きました') do |format|
       format.text
     end
   end
