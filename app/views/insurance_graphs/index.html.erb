@@ -10,15 +10,27 @@
               <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
             <% end %>
             <%= current_user.username %>様
-            <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: 'text-decoration-none' %>の保険金額
+            <% if @insurance_policies.empty? %>
+              <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: 'text-decoration-none' %>の保険金額
+            <% else %>
+              (<%= current_user.birthday.age %>)の保険金額
+            <% end %>
             <i class="far fa-id-card"></i>
           </h1>
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <%= link_to edit_user_birthday_path(current_user), class: 'text-decoration-none' do %>
+            <% if @insurance_policies.empty? %>
+              <%= link_to edit_user_birthday_path(current_user), class: 'text-decoration-none' do %>
+                <i class="fas fa-birthday-cake"></i>
+                <%= current_user.birthday.date_of_birth %>
+              <% end %>
+            <% else %>
               <i class="fas fa-birthday-cake"></i>
               <%= current_user.birthday.date_of_birth %>
+              <div class='mt-1'>
+                <small class="text-muted">※生年月日を編集するには保険契約を０にする必要があります。</small>
+              </div>
             <% end %>
           </div>
           <div class="mb-4">
@@ -26,7 +38,7 @@
               <div class="form-group mb-2">
                 <%= label_tag :age, "指定年齢で保険金額計算ができます", class: "mr-2" %>
                 <div class="d-inline-flex align-items-center">
-                  <%= number_field_tag :age, nil, class: "form-control  bg-light mr-2 custom-width" %>歳
+                  <%= number_field_tag :age, nil, class: "form-control bg-light mr-2 custom-width" %>歳
                 </div>
               </div>
               <%= submit_tag "計算", class: "btn btn-primary m-2", data: { turbo: false } %>
