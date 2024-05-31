@@ -30,10 +30,10 @@
               <%= link_to "ご葬儀プラン", (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: "nav-link" %><span class="sr-only">(current)</span>
             </li>
             <li class="nav-item">
-              <%= link_to "家族へのメッセージ", (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "nav-link" %>
+              <%= link_to "ご遺言動画", (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ご遺影", (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" %>
+              <%= link_to "ご遺影写真", (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "お問い合わせ", contacts_path, class: "nav-link" %>
@@ -72,13 +72,18 @@
       <div class="container-fluid py-3">
         <div class="row">
           <div class="text-center py-3" "col-md-6">
-            <h5>エンディングノート</h5>
+            <%= link_to 'エンディングノート', "/", class: 'navbar-brand' %>
           </div>
         </div>
       </div>
-      <div class="text-center py-3" "bg-dark text-white mt-4">
-        © 2024 Ending.note. All rights reserved.
-      </div>
+      <div class="text-center py-3 bg-dark text-white">
+        <p>© 2024 Ending.note. All rights reserved.</p>
+        <p>Created by Takuro Miyanaga</p>
+        <div class="small-text">
+          <p>当サイトでは金融庁登録の保険会社を使用しています。</p>
+          <p>当サイトでは厚生労働省及び農林水産省登録の共済団体を使用しています。</p>
+        </div>
+      </div>    
     </footer>
     
     <!-- Bootstrap CSS -->

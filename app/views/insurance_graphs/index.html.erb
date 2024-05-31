@@ -26,7 +26,7 @@
               <div class="form-group mb-2">
                 <%= label_tag :age, "指定年齢で保険金額計算ができます", class: "mr-2" %>
                 <div class="d-inline-flex align-items-center">
-                  <%= number_field_tag :age, nil, class: "form-control mr-2 custom-width" %>歳
+                  <%= number_field_tag :age, nil, class: "form-control  bg-light mr-2 custom-width" %>歳
                 </div>
               </div>
               <%= submit_tag "計算", class: "btn btn-primary m-2", data: { turbo: false } %>

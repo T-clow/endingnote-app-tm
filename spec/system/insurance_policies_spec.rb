@@ -30,7 +30,7 @@ RSpec.describe 'InsurancePolicies', type: :system do
       fill_in '保険会社', with: 'テスト生命'
       fill_in '保険の種類', with: '医療保険'
       fill_in '保険金額（万円）', with: 500
-      fill_in '保険期間（年齢で入力または終身を選択）', with: 90
+      fill_in '保険期間', with: 90
       fill_in '証券番号', with: '123456'
       fill_in '備考', with: '備考テスト'
       click_button '登録する'
@@ -44,10 +44,10 @@ RSpec.describe 'InsurancePolicies', type: :system do
       fill_in '保険会社', with: '編集後テスト生命'
       fill_in '保険の種類', with: 'がん保険'
       fill_in '保険金額（万円）', with: 1000
-      fill_in '保険期間（年齢で入力または終身を選択）', with: 60
+      fill_in '保険期間', with: 60
       fill_in '証券番号', with: '654321'
       fill_in '備考', with: '編集後備考'
-      click_button '登録する'
+      click_button '再登録する'
       expect(current_path).to eq(user_insurance_graphs_path(user))
       expect(page).to have_content('保険契約一覧')
       expect(page).to have_content('編集後テスト生命')

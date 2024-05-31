@@ -1,11 +1,13 @@
 <% if @insurance_policy.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" role="alert">
     <ul>
-    <% @insurance_policy.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @insurance_policy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
+<% else %>
+  <div id="error_explanation" class="d-none"></div>
 <% end %>
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -16,59 +18,85 @@
         </div>
         <div class="card-body">
           <%= form_with(model: [@user, @insurance_policy], local: true) do |form| %>
-            <div class="form-group">
-              <%= form.label :policy_number, '証券番号(ご不明な場合は空欄で登録ください)' %>
-              <%= form.text_field :policy_number, class: 'form-control' %>
+            <div class="form-group text-start">
+              <%= form.label :policy_number, '証券番号', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-warning rounded-0">任意</span>
+                <small class="text-muted">ご不明な場合は空欄</small>
+              </div>
+              <%= form.text_field :policy_number, class: 'form-control bg-light' %>
             </div>
-            <div class="form-group">
-              <%= form.label :insurance_company, '保険会社' %>
-              <%= form.text_field :insurance_company, list: "insurance_company_list", class: "form-control" %>
+            <div class="form-group text-start">
+              <%= form.label :insurance_company, '保険会社', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+              </div>
+              <%= form.text_field :insurance_company, list: "insurance_company_list", class: "form-control bg-light" %>
               <datalist id="insurance_company_list">
                 <% InsurancePolicy::INSURANCE_COMPANIES.each do |company| %>
                   <option value="<%= company %>"></option>
                 <% end %>
               </datalist>
             </div>
-            <div class="form-group">
-              <%= form.label :insurance_type, '保険の種類' %>
-              <%= form.text_field :insurance_type, list: "insurance_type_list", class: "form-control" %>
+            <div class="form-group text-start">
+              <%= form.label :insurance_type, '保険の種類', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">死亡保障が付加のご契約をご入力</small>
+              </div>
+              <%= form.text_field :insurance_type, list: "insurance_type_list", class: "form-control bg-light" %>
               <datalist id="insurance_type_list">
                 <% InsurancePolicy::INSURANCE_TYPES.each do |type| %>
                   <option value="<%= type %>"></option>
                 <% end %>
               </datalist>
             </div>
-            <div class="form-group">
-              <%= form.label :insurance_amount, '保険金額（万円）' %>
-              <%= form.text_field :insurance_amount, list: "insurance_amount_options", value: @insurance_policy.insurance_amount.present? ? @insurance_policy.insurance_amount / 10000 : "", class: "form-control" %>
+            <div class="form-group text-start">
+              <%= form.label :insurance_amount, '保険金額（万円）', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">例:1000万円の場合,1000と入力</small>
+              </div>
+              <%= form.text_field :insurance_amount, list: "insurance_amount_options", value: @insurance_policy.insurance_amount.present? ? @insurance_policy.insurance_amount / 10000 : "", class: "form-control bg-light" %>
               <datalist id="insurance_amount_options">
                 <% InsurancePolicy.insurance_amount_options.each do |option, value| %>
                   <option value="<%= value %>"></option>
                 <% end %>
               </datalist>
             </div>
-            <div class="form-group">
-              <%= form.label :insurance_period, '保険期間（年齢で入力または終身を選択）' %>
-              <%= form.text_field :insurance_period, list: "insurance_period_options", class: "form-control" %>
+            <div class="form-group text-start">
+              <%= form.label :insurance_period, '保険期間', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">年齢で入力または終身を選択</small>
+              </div>
+              <%= form.text_field :insurance_period, list: "insurance_period_options", class: "form-control bg-light" %>
               <datalist id="insurance_period_options">
                 <% InsurancePolicy.insurance_period_options(@user.birthday.age).each do |option, value| %>
                   <option value="<%= option %>"><%= option %></option>
                 <% end %>
               </datalist>
             </div>
-            <div class="form-group">
-              <%= form.label :policy_image, "証券画像" %>
-              <%= form.file_field :policy_image, class: 'form-control' %>
+            <div class="form-group text-start">
+              <%= form.label :policy_image, "証券画像", class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-warning rounded-0">任意</span>
+              </div>
+              <%= form.file_field :policy_image, class: 'form-control bg-light' %>
             </div>
-            <div class="form-group">
-              <%= form.label :note, "備考" %>
-              <%= form.text_area :note, class: 'form-control' %>
+            <div class="form-group text-start">
+              <%= form.label :note, "備考", class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-warning rounded-0">任意</span>
+                <small class="text-muted">その他ご要望はこちら</small>
+              </div>
+              <%= form.text_area :note, class: 'form-control bg-light' %>
             </div>
             <div class="actions mt-4">
               <%= form.submit "登録する", class: "btn btn-primary w-100", data: { turbo: "false" } %>
             </div>
           <% end %>
-          <%= link_to '前の画面に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false }  %>
+          <%= link_to '前の画面に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false } %>
         </div>
       </div>
     </div>
