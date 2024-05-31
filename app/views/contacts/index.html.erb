@@ -12,7 +12,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h2>お問い合わせ</h2>
+          <h2><i class="far fa-envelope"></i> お問い合わせ</h2>
         </div>
         <div class="card-body">
           <%= form_with model: @contact, local: true, data: { turbo: false }, url: confirm_contacts_path do |form| %>
@@ -37,7 +37,7 @@
               <%= form.submit "確認", class: "btn btn-dark w-100" %>
             </div>
           <% end %>
-          <%= link_to '前の画面に戻る', "/", class: "btn btn-secondary w-100 mt-3" %>
+          <%= link_to 'トップページへ', "/", class: "btn btn-secondary w-100 mt-3" %>
         </div>
       </div>
     </div>

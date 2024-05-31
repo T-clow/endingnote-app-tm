@@ -11,12 +11,15 @@
             <% end %>
             <%= current_user.username %>様
             <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: 'text-decoration-none' %>の保険金額
+            <i class="far fa-id-card"></i>
           </h1>
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <strong>生年月日:</strong>
-            <%= current_user.birthday.date_of_birth %>
+            <%= link_to edit_user_birthday_path(current_user), class: 'text-decoration-none' do %>
+              <i class="fas fa-birthday-cake"></i>
+              <%= current_user.birthday.date_of_birth %>
+            <% end %>
           </div>
           <div class="mb-4">
             <%= form_with url: calculate_insurance_amount_by_age_user_insurance_graphs_path(@user), method: :post, local: true, class: "form-inline justify-content-center" do %>
@@ -41,7 +44,7 @@
           <canvas id="myBarChart"></canvas>
         </div>
         <div class="card-header">
-          <h2>保険契約一覧</h2>
+          <h2><i class="fas fa-file-alt"></i> 保険契約一覧</h2>
         </div>
         <div class="card-body">
           <% if @insurance_policies.empty? %>
