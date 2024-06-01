@@ -8,48 +8,82 @@ RSpec.describe "Birthdays", type: :request do
     sign_in user
   end
 
-  describe "GET /new" do
-    it "生年月日登録ページにアクセスできること" do
-      get new_user_birthday_path(user)
-      expect(response).to be_successful
-    end
-  end
-
   describe "POST /create" do
     it "新しい生年月日が作成されること" do
-      expect do
-        post user_birthday_path(user), params: { birthday: valid_attributes }
-      end.to change(Birthday, :count).by(1)
+      post user_birthday_path(user), params: { birthday: valid_attributes }
+      expect(Birthday.find_by(user: user).date_of_birth).to eq(Date.new(1990, 9, 10))
       expect(response).to redirect_to(user_insurance_graphs_path(user))
     end
   end
 
-  describe "GET /edit" do
-    it "生年月日編集ページにアクセスできること" do
-      birthday = Birthday.create! valid_attributes.merge(user: user)
-      get edit_user_birthday_path(user, birthday)
-      expect(response).to be_successful
+  context "既存の誕生日がない場合" do
+    describe "GET /new" do
+      it "生年月日登録ページにアクセスできること" do
+        get new_user_birthday_path(user)
+        expect(response).to be_successful
+      end
     end
   end
 
-  describe "PATCH /update" do
-    it "生年月日が更新されること" do
-      birthday = Birthday.create! valid_attributes.merge(user: user)
-      updated_date = { date_of_birth: Date.new(1958, 11, 4) }
-      patch user_birthday_path(user, birthday), params: { birthday: updated_date }
-      birthday.reload
-      expect(birthday.date_of_birth).to eq(Date.new(1958, 11, 4))
-      expect(response).to redirect_to(user_insurance_graphs_path(user))
-    end
-  end
+  context "既存の誕生日がある場合" do
+    let!(:birthday) { create(:birthday, user: user) }
 
-  describe "DELETE /destroy" do
-    it "要求された生年月日が削除されること" do
-      birthday = Birthday.create! valid_attributes.merge(user: user)
-      expect do
+    describe "GET /edit" do
+      context "保険契約がない場合" do
+        it "生年月日編集ページにアクセスできること" do
+          get edit_user_birthday_path(user, birthday)
+          expect(response).to be_successful
+        end
+      end
+
+      context "保険契約がある場合" do
+        let!(:insurance_policy) { create(:insurance_policy, user: user) }
+
+        it "生年月日編集ページにアクセスできないこと" do
+          get edit_user_birthday_path(user, birthday)
+          expect(response).to redirect_to(user_insurance_graphs_path(user))
+          expect(flash[:alert]).to eq('保険契約があるため、生年月日を編集できません。')
+        end
+      end
+    end
+
+    describe "PATCH /update" do
+      it "生年月日が更新されること" do
+        patch user_birthday_path(user, birthday), params: { birthday: { date_of_birth: Date.new(1958, 11, 4) } }
+        birthday.reload
+        expect(birthday.date_of_birth).to eq(Date.new(1958, 11, 4))
+        expect(response).to redirect_to(user_insurance_graphs_path(user))
+      end
+    end
+
+    describe "DELETE /destroy" do
+      it "要求された生年月日が削除されること" do
         delete user_birthday_path(user, birthday)
-      end.to change(Birthday, :count).by(-1)
-      expect(response).to redirect_to("/")
+        expect(Birthday.find_by(user: user)).to be_nil
+        expect(response).to redirect_to("/")
+      end
+    end
+  end
+
+  describe "InsuranceGraphs GET /index" do
+    let!(:birthday) { create(:birthday, user: user) }
+
+    context "保険契約がない場合" do
+      it "生年月日編集リンクが表示されること" do
+        get user_insurance_graphs_path(user)
+        expect(response.body).to include(edit_user_birthday_path(user))
+        expect(response.body).to include("(#{user.birthday.age})")
+      end
+    end
+
+    context "保険契約がある場合" do
+      let!(:insurance_policy) { create(:insurance_policy, user: user) }
+
+      it "生年月日編集リンクが表示されないこと" do
+        get user_insurance_graphs_path(user)
+        expect(response.body).not_to include(edit_user_birthday_path(user))
+        expect(response.body).to include("※生年月日を編集するには保険契約を０にする必要があります。")
+      end
     end
   end
 end
