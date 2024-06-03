@@ -23,6 +23,17 @@ RSpec.describe "InsuranceAmountCalculations", type: :request do
       expect(response.body).to include(policy2.insurance_company)
       expect(response.body).to include(policy3.insurance_company)
     end
+
+    context "年月が経過した場合" do
+      it "満期を過ぎた保険契約も表示されること" do
+        travel_to Time.zone.local(2030, 1, 1) do
+          get user_insurance_graphs_path(user)
+          expect(response.body).to include(policy1.insurance_company)
+          expect(response.body).to include(policy2.insurance_company)
+          expect(response.body).to include(policy3.insurance_company)
+        end
+      end
+    end
   end
 
   describe "POST /calculate_insurance_amount_by_age" do
@@ -31,7 +42,7 @@ RSpec.describe "InsuranceAmountCalculations", type: :request do
         post calculate_insurance_amount_by_age_user_insurance_graphs_path(user), params: { age: 65 }
         expect(response).to redirect_to(user_insurance_graphs_path(user))
         follow_redirect!
-        expect(response.body).to include("1500")
+        expect(response.body).to include("1500000")
       end
     end
 
