@@ -43,7 +43,7 @@
         <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: 'text-decoration-none' do %>
           <div class="card h-100">
             <div class="card-body btn btn-outline-success">
-              <h2 class="card-title"><i class="far fa-comment-dots icon-hover-animation"></i> ご遺言動画</h2>
+              <h2 class="card-title"><i class="fas fa-video icon-hover-animation"></i> ご遺言動画</h2>
               <p class="card-text">伝えたい想いを動画でご家族に残せます。</p>
             </div>
           </div>

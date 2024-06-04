@@ -35,7 +35,7 @@ RSpec.describe "Users", type: :system do
   describe "ゲストログインができること" do
     it "ゲストログインを行い、成功のメッセージが表示されること" do
       visit "/"
-      click_on "ゲストログイン"
+      click_on "ゲスト"
       expect(page).to have_content("ゲストユーザーとしてログインしました。")
     end
   end
