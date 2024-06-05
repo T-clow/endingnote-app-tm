@@ -18,6 +18,9 @@ if ENV['CI'] == 'true'
     options.add_preference('profile.managed_default_content_settings.geolocation', 1)
     options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120
+
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
       url: "http://localhost:4444/wd/hub",
@@ -35,9 +38,12 @@ else
     options.add_preference('profile.managed_default_content_settings.geolocation', 1)
     options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120
+
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
-      url: "http://192.168.80.3:4444",
+      url: "http://192.168.128.3:4444",
       capabilities: options)
   end
   Capybara.javascript_driver = :selenium_remote_chrome
@@ -46,6 +52,10 @@ end
 Capybara.server_host = '0.0.0.0'
 Capybara.server_port = 3001
 Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}:#{Capybara.server_port}"
+
+Capybara.configure do |config|
+  config.default_max_wait_time = 10
+end
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

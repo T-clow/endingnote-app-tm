@@ -35,13 +35,19 @@
               <%= f.password_field :password, class: "form-control bg-light", placeholder: "ご登録のパスワードをご入力" %>
             </div>
             <div>
-              <%= f.submit "ログイン", class: "btn btn-primary w-100 mt-3" %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>
+                <i class="fas fa-sign-in-alt"></i><span> ログイン</span>
+              <% end %>
             </div>
           <% end %>
           <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
-            <%= form.submit "ゲストログイン", class: 'btn btn-outline-success w-100 mt-3' %>
+            <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 w-100 mt-3') do %>
+              <i class="fas fa-user-secret"></i><span> ゲストログイン</span>
+            <% end %>
+          <% end %>   
+          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+            <i class="fas fa-home"></i><span> トップページへ</span>
           <% end %>
-          <%= link_to 'トップページへ', "/", class: "btn btn-secondary w-100 mt-3" %>
         </div>
       </div>
     </div>
