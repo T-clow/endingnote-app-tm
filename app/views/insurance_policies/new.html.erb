@@ -22,7 +22,7 @@
               <%= form.label :policy_number, '証券番号', class: 'ml-2 label-bold' %>
               <div class='ml-1 mb-1'>
                 <span class="badge badge-warning rounded-0">任意</span>
-                <small class="text-muted">ご不明な場合は空欄</small>
+                <small class="text-muted">ハイフン不要,半角英数字カタカナ</small>
               </div>
               <%= form.text_field :policy_number, class: 'form-control bg-light' %>
             </div>
@@ -93,10 +93,14 @@
               <%= form.text_area :note, class: 'form-control bg-light' %>
             </div>
             <div class="actions mt-4">
-              <%= form.submit "登録する", class: "btn btn-primary w-100", data: { turbo: "false" } %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: "false" }) do %>
+                <i class="fas fa-check-circle"></i><span> 登録</span>
+              <% end %>
             </div>
           <% end %>
-          <%= link_to '前の画面に戻る', user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false } %>
+          <%= link_to user_insurance_graphs_path(current_user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false } do %>
+            <i class="fas fa-arrow-left"></i><span> 前の画面に戻る</span>
+          <% end %>
         </div>
       </div>
     </div>

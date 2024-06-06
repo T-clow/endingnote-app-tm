@@ -21,13 +21,19 @@
               <%= form.text_area :comment, rows: 3, class: 'form-control' %>
             </div>
             <div class="actions mt-4">
-              <%= form.submit "更新", class: "btn btn-primary w-100" %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>
+                <i class="fas fa-sync"></i><span> 更新</span>
+              <% end %>
             </div>
           <% end %>
           <div class="mt-3">
-            <%= button_to '削除', user_memorial_photo_path(@user, @memorial_photo), method: "delete", form: { data: { turbo_confirm: "削除しますか？" } }, class: "btn btn-danger w-100" %>
+            <%= button_to user_memorial_photo_path(@user, @memorial_photo), method: "delete", form: { data: { turbo_confirm: "本当に削除しますか？" } }, class: "btn btn-danger w-100" do %>
+              <i class="fas fa-trash"></i><span> 画像を削除</span>
+            <% end %>
           </div>
-          <%= link_to "前の画面に戻る", user_memorial_photos_path(@user), class: "btn btn-secondary w-100 mt-3" %>
+          <%= link_to user_memorial_photos_path(@user), class: "btn btn-secondary w-100 mt-3", data: { turbo: false } do %>
+            <i class="fas fa-arrow-left"></i><span> 一覧に戻る</span>
+          <% end %>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ RSpec.describe "生年月日の管理", type: :system, js: true do
       select '1980', from: 'birthday_date_of_birth_1i'
       select '11', from: 'birthday_date_of_birth_2i'
       select '4', from: 'birthday_date_of_birth_3i'
-      click_button '登録する'
+      click_button '登録'
       expect(page).to have_content('生年月日が登録されました')
       expect(current_path).to eq(user_insurance_graphs_path(user))
     end
@@ -29,7 +29,7 @@ RSpec.describe "生年月日の管理", type: :system, js: true do
         select '1990', from: 'birthday_date_of_birth_1i'
         select '9', from: 'birthday_date_of_birth_2i'
         select '10', from: 'birthday_date_of_birth_3i'
-        click_button '更新する'
+        click_button '更新'
 
         expect(page).to have_content('生年月日が更新されました')
         expect(current_path).to eq(user_insurance_graphs_path(user))
@@ -40,7 +40,7 @@ RSpec.describe "生年月日の管理", type: :system, js: true do
     describe "生年月日の削除" do
       it "ユーザーが生年月日を削除できること" do
         visit edit_user_birthday_path(user, birthday)
-        find('.btn-danger', text: '削除').click
+        find('.btn-danger', text: '生年月日を削除').click
         accept_alert
         expect(page).to have_content('生年月日が削除されました')
         expect(current_path).to eq("/")

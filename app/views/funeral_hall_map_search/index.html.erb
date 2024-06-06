@@ -31,7 +31,7 @@
             <div class="form-group">
               <%= form.text_field :address, id: 'address-input', class: 'form-control bg-light', placeholder: '住所を入力' %>
               <%= button_tag type: 'button', class: 'btn btn-primary', onclick: 'geocodeAddress()' do %>
-                マップを更新
+                <i class="fas fa-map-marker-alt"></i><span> MAPを更新</span>
               <% end %>
             </div>
           <% end %>
@@ -44,7 +44,9 @@
           <div id="user-avatar" data-avatar-url="<%= image_url('map_icon_here.png') %>"></div>
           <div id="funeral-home-icon" data-icon-url="<%= image_url('funeral_home_icon.png') %>"></div>
           <div class="mt-4">
-            <%= link_to "トップページへ", "/", class: "btn btn-secondary w-100 mt-3" %>
+            <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+              <i class="fas fa-home"></i><span> トップページへ</span>
+            <% end %>
           </div>
         </div>
       </div>

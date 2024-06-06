@@ -15,7 +15,7 @@ RSpec.describe "MemorialPhotos", type: :system do
       visit new_user_memorial_photo_path(user)
       attach_file 'memorial_photo[photo]', image_path
       fill_in 'memorial_photo[comment]', with: '新しいコメント'
-      click_button 'アップロード'
+      click_button '登録'
       expect(page).to have_content('遺影画像をアップロードしました。')
       expect(MemorialPhoto.last).to be_persisted
       expect(MemorialPhoto.last.photo).to be_attached
@@ -24,7 +24,7 @@ RSpec.describe "MemorialPhotos", type: :system do
     it "大きすぎるファイルはアップロードに失敗すること" do
       visit new_user_memorial_photo_path(user)
       attach_file 'memorial_photo[photo]', large_image_path, visible: false
-      click_button 'アップロード'
+      click_button '登録'
       expect(page).to have_content('画像のサイズは20MB以下である必要があります')
       expect(MemorialPhoto.count).to eq(0)
     end
@@ -57,7 +57,7 @@ RSpec.describe "MemorialPhotos", type: :system do
 
     it "ユーザーは写真を削除できること" do
       visit edit_user_memorial_photo_path(user, memorial_photo)
-      find('.btn-danger', text: '削除', wait: 10).click
+      find('.btn-danger', text: '画像を削除', wait: 10).click
       accept_alert
       expect(page).to have_content('画像が正常に削除されました')
     end

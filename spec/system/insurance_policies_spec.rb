@@ -33,7 +33,7 @@ RSpec.describe 'InsurancePolicies', type: :system do
       fill_in '保険期間', with: 90
       fill_in '証券番号', with: '123456'
       fill_in '備考', with: '備考テスト'
-      click_button '登録する'
+      click_button '登録'
       expect(current_path).to eq(user_insurance_graphs_path(user))
       expect(page).to have_content('保険契約一覧')
       expect(page).to have_content('テスト生命')
@@ -47,7 +47,7 @@ RSpec.describe 'InsurancePolicies', type: :system do
       fill_in '保険期間', with: 60
       fill_in '証券番号', with: '654321'
       fill_in '備考', with: '編集後備考'
-      click_button '再登録する'
+      click_button '更新'
       expect(current_path).to eq(user_insurance_graphs_path(user))
       expect(page).to have_content('保険契約一覧')
       expect(page).to have_content('編集後テスト生命')
@@ -55,7 +55,7 @@ RSpec.describe 'InsurancePolicies', type: :system do
 
     it '保険契約を削除すること' do
       visit edit_user_insurance_policy_path(user, insurance_policy)
-      find('.btn-danger', text: '削除').click
+      find('.btn-danger', text: '保険証券を削除').click
       accept_alert
       expect(page).to have_content('保険証券が削除されました。')
       expect(current_path).to eq(user_insurance_graphs_path(user))

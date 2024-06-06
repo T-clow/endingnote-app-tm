@@ -17,7 +17,7 @@ RSpec.describe "FuneralPreferences", type: :system do
       select '自宅', from: '場所'
       select '仏教', from: '宗派'
       fill_in '備考', with: '特になし'
-      click_button '保存'
+      click_button '登録'
       expect(page).to have_content('葬儀設定が正常に作成されました。')
       expect(page).to have_content('家族葬にして欲しい')
     end
@@ -44,11 +44,11 @@ RSpec.describe "FuneralPreferences", type: :system do
 
   describe "葬儀設定を削除できること" do
     it "葬儀設定を削除し、成功のメッセージが表示されること" do
-      login_as(user, scope: :user)
-      visit edit_user_registration_path
-      find('button.btn-danger', text: '削除').click
+      funeral_preference = create(:funeral_preference, user: user)
+      visit edit_user_funeral_preference_path(user, funeral_preference)
+      find('button.btn-danger', text: 'ご葬儀プランを削除').click
       accept_alert
-      expect(page).to have_content("アカウントを削除しました。")
+      expect(page).to have_content("葬儀設定が正常に削除されました。")
     end
   end
 end

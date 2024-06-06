@@ -45,7 +45,7 @@ RSpec.describe "Users", type: :system do
       login_as(user, scope: :user)
       visit edit_user_registration_path
       fill_in "現在のパスワード", with: user.password
-      find('button', text: 'アカウントを削除する').click
+      find('button', text: 'アカウントを削除').click
       accept_alert
       expect(page).to have_content("アカウントを削除しました。")
     end
