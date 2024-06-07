@@ -12,7 +12,7 @@ RSpec.describe "FuneralPreferences", type: :system do
     it "ユーザーは新しい葬儀設定を作成できる" do
       visit new_user_funeral_preference_path(user)
       select '家族葬にして欲しい', from: '葬儀の種類'
-      select 'できるだけお金をかけないで欲しい', from: 'ご予算'
+      select '50万円以下', from: 'ご予算'
       select '10人以下', from: '呼ぶ人'
       select '自宅', from: '場所'
       select '仏教', from: '宗派'
