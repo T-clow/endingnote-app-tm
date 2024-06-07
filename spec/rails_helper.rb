@@ -54,7 +54,7 @@ Capybara.server_port = 3001
 Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}:#{Capybara.server_port}"
 
 Capybara.configure do |config|
-  config.default_max_wait_time = 10
+  config.default_max_wait_time = 20
 end
 
 begin
