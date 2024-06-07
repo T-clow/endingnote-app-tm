@@ -27,22 +27,22 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: "nav-link" do %>
+              <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-street-view"></i><span> 葬儀場MAP</span>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: "nav-link" do %>
+              <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-users"></i><span> ご葬儀プラン</span>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "nav-link" do %>
+              <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), data: { turbo: "false" }, data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-video"></i><span> ご遺言動画</span>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" do %>
+              <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-camera"></i><span> ご遺影写真</span>
               <% end %>
             </li>
@@ -60,7 +60,7 @@
             <% end %>
             <p class="user_name"><%= current_user.username %> 様</p>
             <% if user_signed_in? %>
-              <%= link_to edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', role: 'button' do %>
+              <%= link_to edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
                 <i class="fas fa-edit"></i><span class="tablet-hide"> 編集</span>
               <% end %>
             <% end %>
@@ -70,10 +70,10 @@
               <% end %>
             <% end %>            
             <% else %>
-              <%= link_to new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' do %>
+              <%= link_to new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
                 <i class="fas fa-user-plus"></i><span> 新規登録</span>
               <% end %>
-              <%= link_to new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' do %>
+              <%= link_to new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
                 <i class="fas fa-sign-in-alt"></i><span> ログイン</span>
               <% end %>
               <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
