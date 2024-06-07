@@ -61,7 +61,11 @@
     <div class="col-md-8 mt-3">
       <div class="card text-center py-2">
         <div class="card-text">
-          アカウントを持っていない方はこちら<br>
+          パスワードを忘れた方はこちら
+          <%= link_to 'パスワード再設定へ', new_user_password_path, class: "fs-6 my-4 text-decoration-none text-danger" %>
+        </div>
+        <div class="card-text">
+          アカウントを持っていない方はこちら
           <%= link_to "新規登録へ", new_user_registration_path, class: "fs-6 my-4 text-decoration-none text-info", data: { turbo: "false" } %>
         </div>
       </div>
