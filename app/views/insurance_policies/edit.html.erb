@@ -17,21 +17,21 @@
           <h2><i class="fas fa-file-alt"></i> 保険証券を編集</h2>
         </div>
         <div class="card-body">
-          <%= form_with(model: [@user, @insurance_policy], local: true) do |form| %>
+          <%= form_with(model: [@user, @insurance_policy], local: true) do |f| %>
             <div class="form-group text-start">
-              <%= form.label :policy_number, '証券番号', class: 'ml-2 label-bold' %>
+              <%= f.label :policy_number, '証券番号', class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
                 <small class="text-muted">ハイフン不要,半角英数字カタカナ</small>
               </div>
-              <%= form.text_field :policy_number, class: 'form-control bg-light' %>
+              <%= f.text_field :policy_number, class: 'form-control bg-light' %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :insurance_company, '保険会社', class: 'ml-2 label-bold' %>
+              <%= f.label :insurance_company, '保険会社', class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
               </div>
-              <%= form.text_field :insurance_company, list: "insurance_company_list", class: "form-control bg-light" %>
+              <%= f.text_field :insurance_company, list: "insurance_company_list", class: "form-control bg-light" %>
               <datalist id="insurance_company_list">
                 <% InsurancePolicy::INSURANCE_COMPANIES.each do |company| %>
                   <option value="<%= company %>"></option>
@@ -39,11 +39,11 @@
               </datalist>
             </div>
             <div class="form-group text-start">
-              <%= form.label :insurance_type, '保険の種類', class: 'ml-2 label-bold' %>
+              <%= f.label :insurance_type, '保険の種類', class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
               </div>
-              <%= form.text_field :insurance_type, list: "insurance_type_list", class: "form-control bg-light" %>
+              <%= f.text_field :insurance_type, list: "insurance_type_list", class: "form-control bg-light" %>
               <datalist id="insurance_type_list">
                 <% InsurancePolicy::INSURANCE_TYPES.each do |type| %>
                   <option value="<%= type %>"></option>
@@ -51,12 +51,12 @@
               </datalist>
             </div>
             <div class="form-group text-start">
-              <%= form.label :insurance_amount, '保険金額（万円）', class: 'ml-2 label-bold' %>
+              <%= f.label :insurance_amount, '保険金額（万円）', class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">例:1000万円の場合,1000と入力</small>
               </div>
-              <%= form.text_field :insurance_amount, list: "insurance_amount_options", value: @insurance_policy.insurance_amount.present? ? @insurance_policy.insurance_amount / 10000 : "", class: "form-control bg-light" %>
+              <%= f.text_field :insurance_amount, list: "insurance_amount_options", value: @insurance_policy.insurance_amount.present? ? @insurance_policy.insurance_amount / 10000 : "", class: "form-control bg-light" %>
               <datalist id="insurance_amount_options">
                 <% InsurancePolicy.insurance_amount_options.each do |option, value| %>
                   <option value="<%= value %>"></option>
@@ -64,12 +64,12 @@
               </datalist>
             </div>
             <div class="form-group text-start">
-              <%= form.label :insurance_period, '保険期間', class: 'ml-2 label-bold' %>
+              <%= f.label :insurance_period, '保険期間', class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">年齢で入力または終身を選択</small>
               </div>
-              <%= form.text_field :insurance_period, value: (@insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period), list: "insurance_period_options", class: "form-control bg-light" %>
+              <%= f.text_field :insurance_period, value: (@insurance_policy.insurance_period == 100 ? "終身" : @insurance_policy.insurance_period), list: "insurance_period_options", class: "form-control bg-light" %>
               <datalist id="insurance_period_options">
                 <% InsurancePolicy.insurance_period_options(@user.birthday.age).each do |option, value| %>
                   <option value="<%= option %>"><%= option %></option>
@@ -84,18 +84,18 @@
               <p>証券画像が登録されてません</p>
             <% end %>
             <div class="form-group text-start">
-              <%= form.label :policy_image, "新しい証券画像", class: 'ml-2 label-bold' %>
+              <%= f.label :policy_image, "新しい証券画像", class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
               </div>
-              <%= form.file_field :policy_image, class: 'form-control bg-light' %>
+              <%= f.file_field :policy_image, class: 'form-control bg-light' %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :note, "備考", class: 'ml-2 label-bold' %>
+              <%= f.label :note, "備考", class: 'ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
               </div>
-              <%= form.text_area :note, class: 'form-control bg-light' %>
+              <%= f.text_area :note, class: 'form-control bg-light' %>
             </div>
             <div class="actions mt-4">
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: "false" }) do %>
