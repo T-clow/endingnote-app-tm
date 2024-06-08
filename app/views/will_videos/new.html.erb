@@ -1,4 +1,3 @@
-
 <% if @will_video.errors.any? %>
   <div id="error_explanation">
     <ul>
@@ -8,8 +7,6 @@
     </ul>
   </div>
 <% end %>
-
-
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -23,7 +20,7 @@
               <%= form.label :video, "遺言動画" %>
               <%= form.file_field :video, name: 'will_video[video]', accept: 'video/*', id: 'videoFile' %>
               <small class="form-text text-muted">※動画は約15分以内、80MB以下に設定してください。</small>
-            </div> 
+            </div>
             <div class="actions mt-4">
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
                 <i class="fas fa-upload"></i><span> 動画を登録</span>

@@ -20,7 +20,7 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="form-group text-start">
               <%= f.label :username, 'ユーザー名', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">アプリ上のお名前</small>
               </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group text-start">
               <%= f.label :full_name, 'お名前', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">フルネーム推奨</small>
               </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group text-start">
               <%= f.label :email, 'Eメール', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">例:user@example.com</small>
               </div>
@@ -47,7 +47,7 @@
             <% end %>
             <div class="form-group text-start">
               <%= f.label :phone_number, '電話番号', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">ハイフン不要</small>
               </div>
@@ -55,21 +55,21 @@
             </div>
             <div class="form-group text-start">
               <%= f.label :avatar, 'プロフィール画像', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
               </div>
               <%= f.file_field :avatar, class: 'form-control bg-light' %>
             </div>
             <div class="form-group text-start password-container">
               <%= f.label :password, '新パスワード', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
                 <div class="password-field-container">
                   <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "ご登録のパスワードをご入力" %>
-                </div> 
+                </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-1">
                     <i id="password-icon-1" class="fas fa-eye"></i>
@@ -79,7 +79,7 @@
             </div>
             <div class="form-group text-start password-container">
               <%= f.label :password_confirmation, 'パスワード確認', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>の場合
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">確認用再度入力</small>
@@ -97,7 +97,7 @@
             </div>
             <div class="form-group text-start password-container">
               <%= f.label :current_password, '現在のパスワード', class: 'form-label ml-2 label-bold' %>
-              <div class='ml-1 mb-1'>
+              <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">英数字６文字以上</small>
               </div>

@@ -31,6 +31,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'dotenv-rails'
+  gem 'erb_lint'
 end
 
 group :development do

@@ -28,7 +28,7 @@
             <% else %>
               <i class="fas fa-birthday-cake"></i>
               <%= current_user.birthday.date_of_birth %>
-              <div class='mt-1'>
+              <div class="mt-1">
                 <small class="text-muted">※生年月日を編集するには保険契約を０にする必要があります。</small>
               </div>
             <% end %>
@@ -38,7 +38,7 @@
               <div class="form-group mb-2">
                 <%= label_tag :age, "指定年齢で保険金額計算ができます", class: "mr-2" %>
                 <div class="d-inline-flex align-items-center">
-                  <%= number_field_tag :age, nil, class: "form-control bg-light mr-2 custom-width" %>歳
+                  <%= number_field_tag :age, nil, class: "form-control bg-light mr-2 custom-width", autocomplete: "off" %>歳
                 </div>
               </div>
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: false }) do %>
