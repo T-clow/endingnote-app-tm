@@ -57,7 +57,9 @@
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
-                <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "パスワードをご入力" %>
+                <div class="password-field-container">
+                  <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "パスワードをご入力" %>
+                </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-1">
                     <i id="password-icon-1" class="fas fa-eye"></i>
@@ -72,7 +74,9 @@
                 <small class="text-muted">確認用再度入力</small>
               </div>
               <div class="input-group">
-                <%= f.password_field :password_confirmation, id: 'password-2', class: "form-control", placeholder: "確認用パスワードをご入力" %>
+                <div class="password-field-container">
+                  <%= f.password_field :password_confirmation, id: 'password-2', class: "form-control", placeholder: "確認用パスワードをご入力" %>
+                </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-2">
                     <i id="password-icon-2" class="fas fa-eye"></i>

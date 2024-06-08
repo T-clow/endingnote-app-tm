@@ -63,11 +63,13 @@
             <div class="form-group text-start password-container">
               <%= f.label :password, '新パスワード', class: 'form-label ml-2 label-bold' %>
               <div class='ml-1 mb-1'>
-                <span class="badge badge-info rounded-0">必須</span>
+                <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
-                <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "ご登録のパスワードをご入力" %>
+                <div class="password-field-container">
+                  <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "ご登録のパスワードをご入力" %>
+                </div> 
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-1">
                     <i id="password-icon-1" class="fas fa-eye"></i>
@@ -78,12 +80,15 @@
             <div class="form-group text-start password-container">
               <%= f.label :password_confirmation, 'パスワード確認', class: 'form-label ml-2 label-bold' %>
               <div class='ml-1 mb-1'>
+                <span class="badge badge-success rounded-0">変更</span>の場合
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">確認用再度入力</small>
               </div>
               <div class="input-group">
-                <%= f.password_field :password_confirmation, id: 'password-2', class: "form-control", placeholder: "パスワード確認" %>
-                <div class="input-group-append">
+                <div class="password-field-container">
+                  <%= f.password_field :password_confirmation, id: 'password-2', class: "form-control", placeholder: "パスワード確認" %>
+                </div>
+                  <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-2">
                     <i id="password-icon-2" class="fas fa-eye"></i>
                   </button>
@@ -97,7 +102,9 @@
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
-                <%= f.password_field :current_password, id: 'password-3', class: "form-control", placeholder: "現在のパスワードをご入力" %>
+                <div class="password-field-container">
+                  <%= f.password_field :current_password, id: 'password-3', class: "form-control", placeholder: "現在のパスワードをご入力" %>
+                </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-3">
                     <i id="password-icon-3" class="fas fa-eye"></i>
