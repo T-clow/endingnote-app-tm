@@ -11,17 +11,17 @@
               <%= form.hidden_field :name %>
               <p><strong>名前:</strong> <%= @contact.name %></p>
             </div>
-            <hr />
+            <hr>
             <div class="form-group">
               <%= form.hidden_field :email %>
               <p><strong>メールアドレス:</strong> <%= @contact.email %></p>
             </div>
-            <hr />
+            <hr>
             <div class="form-group">
               <%= form.hidden_field :content %>
               <p><strong>お問い合わせ内容:</strong><br><%= simple_format(@contact.content) %></p>
             </div>
-            <hr />
+            <hr>
             <p class="confirmation-message">※この内容で送信します。よろしいですか？</p>
             <div class="d-flex flex-column">
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mb-2") do %>

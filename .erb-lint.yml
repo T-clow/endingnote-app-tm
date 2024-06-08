@@ -1,0 +1,4 @@
+linters:
+  HtmlAttributeQuotes:
+    enabled: true
+    enforce_single_quotes: false
