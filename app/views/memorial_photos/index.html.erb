@@ -10,11 +10,13 @@
               <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: 'avatar-image') %>
             <% end %>
             <%= current_user.username %> 様のご遺影一覧
+            <i class="fas fa-camera"></i>
           </h1>
         </div>
         <div class="col-12 mt-4">
-          <%= link_to '画像を追加する', new_user_memorial_photo_path(@user), class: "btn btn-primary" %>
-        </div>
+          <%= link_to new_user_memorial_photo_path(@user), class: 'btn btn-success w-100 mt-2' do %>
+            <i class="fas fa-plus"></i><span> 画像を追加する</span>
+          <% end %>        </div>
         <div class="card-body">
           <div class="row">
             <% @memorial_photos.each do |photo| %>
@@ -32,8 +34,12 @@
               </div>
             <% end %>
             <div class="col-12 mt-4">
-              <%= link_to '画像を追加する', new_user_memorial_photo_path(@user), class: "btn btn-primary" %>
-              <%= link_to "トップページへ", "/", class: "btn btn-secondary w-100 mt-3" %>
+              <%= link_to new_user_memorial_photo_path(@user), class: 'btn btn-success w-100 mt-2' do %>
+                <i class="fas fa-plus"></i><span> 画像を追加する</span>
+              <% end %>
+              <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+                <i class="fas fa-home"></i><span> トップページへ</span>
+              <% end %>
             </div>
           </div>
         </div>

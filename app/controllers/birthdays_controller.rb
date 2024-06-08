@@ -2,6 +2,7 @@ class BirthdaysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_birthday, only: [:edit, :update, :destroy]
+  before_action :ensure_no_insurance_policies, only: [:edit, :update, :destroy, :new, :create]
 
   def new
     @birthday = @user.build_birthday
@@ -44,5 +45,11 @@ class BirthdaysController < ApplicationController
 
   def birthday_params
     params.require(:birthday).permit(:date_of_birth)
+  end
+
+  def ensure_no_insurance_policies
+    if @user.insurance_policies.any?
+      redirect_to user_insurance_graphs_path(@user), alert: '保険契約があるため、生年月日を編集できません。'
+    end
   end
 end

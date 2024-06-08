@@ -1,28 +1,73 @@
-<div class="container home-sections d-flex flex-row justify-content-center align-items-center">
-  <div class="images-section pt-3 d-none d-lg-block"></div>
-  <div class="login-section pt-3">
-    <div class="card text-center pt-5" style="width: 23rem;">
-      <h1>ログイン画面</h1>
-      <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="mb-3 mt-4">
-            <%= f.email_field :email, class: "form-control", placeholder: "Eメール" %>
-          </div>
-          <div class="mb-3">
-            <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
-          </div>
-          <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
-        <% end %>
-        <%= link_to "パスワードを忘れた方", "#", class: "fs-6 d-block my-4 text-decoration-none" %>
-        <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
-          <%= form.submit "ゲストログイン", class: 'btn btn-outline-success w-100' %>
-        <% end %>    
+<% if resource.errors.any? %>
+  <div id="error_explanation" role="alert">
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <div id="error_explanation" class="d-none"></div>
+<% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2><i class="far fa-user-circle"></i> ユーザーログイン</h2>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group text-start">
+              <%= f.label :email, 'Eメール', class: 'form-label ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">例:user@example.com</small>
+              </div>
+              <%= f.email_field :email, class: "form-control bg-light", placeholder: "ご登録のEメールをご入力" %>
+            </div>
+            <div class="form-group text-start password-container">
+              <%= f.label :password, 'パスワード', class: 'form-label ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">英数字６文字以上</small>
+              </div>
+              <div class="input-group">
+                <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "パスワードをご入力" %>
+                <div class="input-group-append">
+                  <button type="button" class="btn" id="toggle-password-1">
+                    <i id="password-icon-1" class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: "false" }) do %>
+                <i class="fas fa-sign-in-alt"></i><span> ログイン</span>
+              <% end %>
+            </div>
+          <% end %>
+          <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
+            <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 w-100 mt-3') do %>
+              <i class="fas fa-user-secret"></i><span> ゲストログイン</span>
+            <% end %>
+          <% end %>   
+          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+            <i class="fas fa-home"></i><span> トップページへ</span>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="card text-center py-2 mt-3" style="width: 23rem;">
-      <div class="card-text">
-        アカウントを持っていない方はこちら
-        <%= link_to "新規登録へ", new_user_registration_path, class: "fs-6 my-4 text-decoration-none text-info" %>
+    <div class="col-md-8 mt-3">
+      <div class="card text-center py-2">
+        <div class="card-text">
+          パスワードを忘れた方はこちら
+          <%= link_to 'パスワード再設定へ', new_user_password_path, class: "fs-6 my-4 text-decoration-none text-danger" %>
+        </div>
+        <div class="card-text">
+          アカウントを持っていない方はこちら
+          <%= link_to "新規登録へ", new_user_registration_path, class: "fs-6 my-4 text-decoration-none text-info", data: { turbo: "false" } %>
+        </div>
       </div>
     </div>
   </div>

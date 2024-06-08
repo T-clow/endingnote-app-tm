@@ -13,7 +13,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h2>生年月日を登録</h2>
+          <h2><i class="fas fa-birthday-cake"></i> 生年月日を登録</h2>
         </div>
         <div class="card-body">
           <%= form_with model: [@user, @birthday], url: user_birthday_path(@user), local: true do |form| %>
@@ -30,11 +30,15 @@
                     ),
                     '年 ', '月 ') + '日' %>
             </div>
-            <div class="actions mt-4">
-              <%= form.submit "登録する", class: "btn btn-primary w-100" %>
+            <div class="actions">
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>
+                <i class="fas fa-check-circle"></i><span> 登録</span>
+              <% end %>            
             </div>
           <% end %>
-          <%= link_to '前の画面に戻る', "/", class: "btn btn-secondary w-100 mt-3" %>
+          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+            <i class="fas fa-home"></i><span> トップページへ</span>
+          <% end %>
         </div>
       </div>
     </div>

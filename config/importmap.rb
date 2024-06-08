@@ -12,3 +12,5 @@ pin "chart.js"
 pin "@kurkle/color", to: "@kurkle--color.js"
 pin "charts/bar_chart", to: "charts/bar_chart.js"
 pin "chart.js", to: "https://ga.jspm.io/npm:chart.js@4.3.0/dist/chart.js"
+pin "password_toggle", to: "password_toggle.js"
+

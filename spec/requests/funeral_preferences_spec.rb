@@ -108,7 +108,7 @@ RSpec.describe 'FuneralPreferences', type: :request do
       {
         funeral_preference: {
           funeral_type: '家族葬にして欲しい',
-          budget: '世間に恥じない一般的な金額にして欲しい',
+          budget: '50万円以下',
           invitees: '10人以下',
           location: '自宅',
           sect: '仏教',

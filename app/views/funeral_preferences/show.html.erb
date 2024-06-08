@@ -9,7 +9,8 @@
             <% else %>
               <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
             <% end %>
-              <%= current_user.username %> 様のご葬儀
+              <%= current_user.username %> 様のご葬儀プラン
+              <i class="fas fa-users"></i>
           </h1>
         </div>
         <div class="card-body">
@@ -20,8 +21,12 @@
           <p class="card-text"><strong>宗派:</strong> <%= @funeral_preference.sect %></p>
           <p class="card-text"><strong>備考:</strong> <%= @funeral_preference.remarks %></p>
           <div class="mt-4">
-            <%= link_to '編集', edit_user_funeral_preference_path(current_user, @funeral_preference), class: 'btn btn-primary' %>
-            <%= link_to "トップページへ", "/", class: "btn btn-secondary w-100 mt-3" %>
+            <%= link_to edit_user_funeral_preference_path(current_user, @funeral_preference), class: 'btn btn-primary', role: 'button' do %>
+              <i class="fas fa-edit"></i><span class="tablet-hide"> 編集</span>
+            <% end %>
+            <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+              <i class="fas fa-home"></i><span> トップページへ</span>
+            <% end %>
           </div>
         </div>
       </div>

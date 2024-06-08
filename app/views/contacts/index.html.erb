@@ -1,43 +1,55 @@
 <% if @contact.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" role="alert">
     <ul>
       <% @contact.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
   </div>
+<% else %>
+  <div id="error_explanation" class="d-none"></div>
 <% end %>
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h2>お問い合わせ</h2>
+          <h2><i class="far fa-envelope"></i> お問い合わせ</h2>
         </div>
         <div class="card-body">
           <%= form_with model: @contact, local: true, data: { turbo: false }, url: confirm_contacts_path do |form| %>
-            <div class="form-group">
-              <%= form.label :name, '名前' %>
-              <span class="badge badge-info rounded-0">必須</span>
-              <%= form.text_field :name, id: 'name', class: 'form-control', placeholder: '名前', value: @contact.name %>
+            <div class="form-group text-start">
+              <%= form.label :name, '名前', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+              </div>
+              <%= form.text_field :name, id: 'name', class: 'form-control bg-light', placeholder: '名前', value: @contact.name %>
             </div>
-            <div class="form-group">
-              <%= form.label :email, 'メールアドレス' %>
-              <span class="badge badge-info rounded-0">必須</span>
-              <small class="text-muted">例:user@example.com</small>
-              <%= form.text_field :email, id: 'email', class: 'form-control', placeholder: 'メールアドレス', value: @contact.email %>
+            <div class="form-group text-start">
+              <%= form.label :email, 'メールアドレス', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">例:user@example.com</small>
+              </div>
+              <%= form.text_field :email, id: 'email', class: 'form-control bg-light', placeholder: 'メールアドレス', value: @contact.email %>
             </div>
-            <div class="form-group">
-              <%= form.label :content, 'お問い合わせ内容' %>
-              <span class="badge badge-info rounded-0">必須</span>
-              <small class="text-muted">パスワードなどの機密情報を含めないでください。</small>
-              <%= form.text_area :content, id: 'content', class: 'form-control', placeholder: 'お問い合わせ内容', rows: '5' %>
+            <div class="form-group text-start">
+              <%= form.label :content, 'お問い合わせ内容', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">パスワードなどの機密情報を含めないでください。</small>
+              </div>
+              <%= form.text_area :content, id: 'content', class: 'form-control bg-light', placeholder: 'お問い合わせ内容', rows: '5' %>
             </div>
             <div>
-              <%= form.submit "確認", class: "btn btn-dark w-100" %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>
+                <i class="fas fa-eye"></i><span> 確認</span>
+              <% end %>
             </div>
           <% end %>
-          <%= link_to '前の画面に戻る', "/", class: "btn btn-secondary w-100 mt-3" %>
+          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+            <i class="fas fa-home"></i><span> トップページへ</span>
+          <% end %>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico.png') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <%= yield(:js) %>
@@ -14,29 +15,41 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <%= link_to 'エンディングノート', "/", class: 'navbar-brand' %>
+        <%= link_to 'エンディングノート', "/", class: 'navbar-brand navbar-brand-tablet' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <%= link_to "ご加入中の保険", (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "nav-link", data: { turbo: false } %>
+              <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "nav-link", data: { turbo: false } do %>
+                <i class="far fa-id-card"></i><span> ご加入中の保険</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "葬儀場MAP", (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: "nav-link" %>
+              <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
+                <i class="fas fa-street-view"></i><span> 葬儀場MAP</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ご葬儀プラン", (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: "nav-link" %><span class="sr-only">(current)</span>
+              <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
+                <i class="fas fa-users"></i><span> ご葬儀プラン</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "家族へのメッセージ", (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "nav-link" %>
+              <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), data: { turbo: "false" }, data: { turbo: "false" }, class: "nav-link" do %>
+                <i class="fas fa-video"></i><span> ご遺言動画</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ご遺影", (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "nav-link" %>
+              <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
+                <i class="fas fa-camera"></i><span> ご遺影写真</span>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "お問い合わせ", contacts_path, class: "nav-link" %>
+              <%= link_to contacts_path, class: "nav-link" do %>
+                <i class="fas fa-envelope"></i><span> お問い合わせ</span>
+              <% end %>
             </li>
           </ul>      
           <% if current_user %>
@@ -47,17 +60,27 @@
             <% end %>
             <p class="user_name"><%= current_user.username %> 様</p>
             <% if user_signed_in? %>
-              <%= link_to "編集", edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', role: 'button' %>
+              <%= link_to edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
+                <i class="fas fa-edit"></i><span class="tablet-hide"> 編集</span>
+              <% end %>
             <% end %>
             <%= form_tag(destroy_user_session_path, method: :delete) do %>
-              <%= submit_tag 'ログアウト', class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
-            <% end %>
+              <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button') do %>
+                <i class="fas fa-sign-out-alt"></i><span class="tablet-hide"> ログアウト</span>
+              <% end %>
+            <% end %>            
             <% else %>
-              <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
-              <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button' %>
+              <%= link_to new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
+                <i class="fas fa-user-plus"></i><span> 新規登録</span>
+              <% end %>
+              <%= link_to new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
+                <i class="fas fa-sign-in-alt"></i><span> ログイン</span>
+              <% end %>
               <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
-                <%= form.submit "ゲストログイン", class: 'btn btn-outline-success my-2 my-sm-0' %>
-              <% end %>              
+                <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 my-sm-0') do %>
+                  <i class="fas fa-user-secret"></i><span> ゲスト</span>
+                <% end %>
+              <% end %>                          
           <% end %>
         </div>
       </nav>
@@ -72,13 +95,18 @@
       <div class="container-fluid py-3">
         <div class="row">
           <div class="text-center py-3" "col-md-6">
-            <h5>エンディングノート</h5>
+            <%= link_to 'エンディングノート', "/", class: 'navbar-brand' %>
           </div>
         </div>
       </div>
-      <div class="text-center py-3" "bg-dark text-white mt-4">
-        © 2024 Ending.note. All rights reserved.
-      </div>
+      <div class="text-center py-3 bg-dark text-white">
+        <p>© 2024 Ending.note. All rights reserved.</p>
+        <p>Created by Takuro Miyanaga</p>
+        <div class="small-text">
+          <p>当サイトでは金融庁登録の保険会社を使用しています。</p>
+          <p>当サイトでは厚生労働省及び農林水産省登録の共済団体を使用しています。</p>
+        </div>
+      </div>    
     </footer>
     
     <!-- Bootstrap CSS -->

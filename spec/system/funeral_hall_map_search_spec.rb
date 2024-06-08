@@ -18,7 +18,7 @@ RSpec.describe '葬儀場マップ', type: :system, js: true do
 
   it '東京駅を入力して周辺の葬儀場のマップが更新されること' do
     fill_in 'address-input', with: '東京駅'
-    find('button', text: 'マップを更新').click
+    find('button', text: 'MAPを更新').click
     expect(page).to have_css('#map', visible: true, wait: 10)
   end
 

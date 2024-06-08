@@ -48,3 +48,5 @@ document.addEventListener("turbo:load", function() {
 });
 
 import "charts/bar_chart";
+import "password_toggle"
+

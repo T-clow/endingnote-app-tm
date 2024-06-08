@@ -1,16 +1,47 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<% if resource.errors.any? %>
+  <div id="error_explanation" role="alert">
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+<% else %>
+  <div id="error_explanation" class="d-none"></div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2><i class="far fa-user-circle"></i> パスワード再設定</h2>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <div class="form-group text-start">
+              <%= f.label :email, 'メールアドレス', class: 'ml-2 label-bold' %>
+              <div class='ml-1 mb-1'>
+                <span class="badge badge-info rounded-0">必須</span>
+                <small class="text-muted">例:user@example.com</small>
+              </div>
+              <%= f.email_field :email, class: 'form-control bg-light', placeholder: 'メールアドレス', autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="actions">
+              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-1") do %>
+                <i class="fas fa-key"></i><span> 再設定リンクを上記アドレスに送信</span>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="mt-5">
+            <%= link_to new_user_session_path, class: 'btn btn-success w-100', data: { turbo: "false" }, role: 'button' do %>
+              <i class="fas fa-sign-in-alt"></i><span> ログインへ</span>
+            <% end %>
+            <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+              <i class="fas fa-home"></i><span> トップページへ</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

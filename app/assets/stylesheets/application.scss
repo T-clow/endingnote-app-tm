@@ -5,6 +5,7 @@
 @import "funeral_hall_map_search";
 @import "insurance_graphs";
 @import "contacts";
+@import "password_toggle";
 
 body {
   padding-top: 50px;
@@ -49,4 +50,27 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 10px;
+}
+
+.label-bold {
+  font-weight: bold;
+}
+
+.small-text {
+  font-size: 0.6em;
+}
+
+@media (min-width: 768px) and (max-width: 1080px) {
+
+  .navbar-nav .nav-item .nav-link span {
+    display: none;
+  }
+
+  .navbar-nav .nav-item .nav-link i {
+    font-size: 1.5em;
+  }
+  
+  .tablet-hide {
+    display: none;
+  }
 }
