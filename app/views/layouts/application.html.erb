@@ -37,7 +37,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), data: { turbo: "false" }, data: { turbo: "false" }, class: "nav-link" do %>
+              <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-video"></i><span> ご遺言動画</span>
               <% end %>
             </li>
