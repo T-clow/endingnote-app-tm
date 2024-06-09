@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe FuneralPreference, type: :model do
   describe 'バリデーションのテスト' do
-    let(:funeral_preference) { FactoryBot.build(:funeral_preference) }
+    let(:funeral_preference) { build(:funeral_preference) }
 
     it '全ての属性が正しく設定されていれば有効であること' do
       expect(funeral_preference).to be_valid

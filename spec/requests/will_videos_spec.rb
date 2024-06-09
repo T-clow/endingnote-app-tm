@@ -12,7 +12,7 @@ RSpec.describe WillVideosController, type: :request do
     it '編集ページが正しく表示されること' do
       will_video.video.attach(io: File.open(Rails.root.join('spec/fixtures/files/valid_video.mp4')), filename: 'valid_video.mp4', content_type: 'video/mp4')
       get edit_user_will_video_path(user_id: user.id, id: will_video.id)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe WillVideosController, type: :request do
     it '詳細ページが正しく表示されること' do
       will_video.video.attach(io: File.open(Rails.root.join('spec/fixtures/files/valid_video.mp4')), filename: 'valid_video.mp4', content_type: 'video/mp4')
       get user_will_video_path(user_id: user.id, id: will_video.id)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:success)
     end
   end
 

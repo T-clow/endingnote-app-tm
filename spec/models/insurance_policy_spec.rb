@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe InsurancePolicy, type: :model do
   let(:user) { create(:user) }
   let!(:birthday) { create(:birthday, user: user) }
-  let(:insurance_policy) { build(:insurance_policy, user: user, insurance_amount: 1000) }
+  let(:insurance_policy) { build(:insurance_policy, user: user) }
   let(:image_path) { Rails.root.join('spec/fixtures/files/image.jpg') }
   let(:large_image_path) { Rails.root.join('spec/fixtures/files/image_large.jpg') }
   let(:gif_image_path) { Rails.root.join('spec/fixtures/files/image.gif') }

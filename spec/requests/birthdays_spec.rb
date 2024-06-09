@@ -20,7 +20,7 @@ RSpec.describe "Birthdays", type: :request do
     describe "GET /new" do
       it "生年月日登録ページにアクセスできること" do
         get new_user_birthday_path(user)
-        expect(response).to be_successful
+        expect(response).to have_http_status(:success)
       end
     end
   end

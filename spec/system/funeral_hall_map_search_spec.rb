@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-Capybara.default_max_wait_time = 10
-
 RSpec.describe '葬儀場マップ', type: :system, js: true do
   let(:user) { create(:user) }
 
