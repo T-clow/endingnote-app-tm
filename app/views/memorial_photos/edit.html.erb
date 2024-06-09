@@ -6,19 +6,19 @@
           <h2><i class="fas fa-camera"></i> ご遺影の編集</h2>
         </div>
         <div class="card-body">
-          <%= form_with(model: [@user, @memorial_photo], local: true) do |form| %>
+          <%= form_with(model: [@user, @memorial_photo], local: true) do |f| %>
             <div class="form-group">
               <h4>既存の画像</h4>
               <%= image_tag url_for(@memorial_photo.photo), style: "max-width: 100%;" %>
             </div>
             <div class="form-group mt-3">
-              <%= form.label :photo, "新しい画像を選択" %>
-              <%= form.file_field :photo, accept: 'image/*' %>
+              <%= f.label :photo, "新しい画像を選択" %>
+              <%= f.file_field :photo, accept: 'image/*' %>
               <small class="form-text text-muted">※新しい画像を選択してください</small>
             </div>
             <div class="form-group mt-3">
-              <%= form.label :comment, "コメント" %>
-              <%= form.text_area :comment, rows: 3, class: 'form-control' %>
+              <%= f.label :comment, "コメント" %>
+              <%= f.text_area :comment, rows: 3, class: 'form-control' %>
             </div>
             <div class="actions mt-4">
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>

@@ -1,13 +1,13 @@
 .title {
-    background-image: url(asset-path('blue_sky.jpg'));
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-  }
-  
-  .title_name   {
-    color: white;
-  }
+  background-image: url(asset-path('blue_sky.jpg'));
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.title_name {
+  color: white;
+}
 
 .card {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -16,7 +16,7 @@
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card .card-body {
@@ -37,8 +37,8 @@
 .btn-primary {
   background-color: #0056b3;
   border: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width : 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .btn-primary:hover {

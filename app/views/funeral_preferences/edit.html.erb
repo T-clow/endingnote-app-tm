@@ -17,49 +17,49 @@
           <h2><i class="fas fa-users"></i> ご葬儀プランの編集</h2>
         </div>
         <div class="card-body">
-          <%= form_with model: [@user, @funeral_preference], local: true do |form| %>
+          <%= form_with model: [@user, @funeral_preference], local: true do |f| %>
             <div class="form-group text-start">
-              <%= form.label :funeral_type, "葬儀の種類", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :funeral_type, "葬儀の種類", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
               </div>
-              <%= form.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
+              <%= f.select :funeral_type, options_for_select(FuneralPreference::FUNERAL_TYPES, @funeral_preference.funeral_type), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :budget, "ご予算", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :budget, "ご予算", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
               </div>
-              <%= form.select :budget, options_for_select(FuneralPreference::BUDGETS, @funeral_preference.budget), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
+              <%= f.select :budget, options_for_select(FuneralPreference::BUDGETS, @funeral_preference.budget), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :invitees, "呼ぶ人", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :invitees, "呼ぶ人", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
               </div>
-              <%= form.select :invitees, options_for_select(FuneralPreference::INVITEES, @funeral_preference.invitees), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
+              <%= f.select :invitees, options_for_select(FuneralPreference::INVITEES, @funeral_preference.invitees), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :location, "場所", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :location, "場所", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
               </div>
-              <%= form.select :location, options_for_select(FuneralPreference::LOCATIONS, @funeral_preference.location), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
+              <%= f.select :location, options_for_select(FuneralPreference::LOCATIONS, @funeral_preference.location), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :sect, "宗派", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :sect, "宗派", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
               </div>
-              <%= form.select :sect, options_for_select(FuneralPreference::SECTS, @funeral_preference.sect), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
+              <%= f.select :sect, options_for_select(FuneralPreference::SECTS, @funeral_preference.sect), { prompt: "-項目をご選択ください-" }, { class: 'form-control bg-light' } %>
             </div>
             <div class="form-group text-start">
-              <%= form.label :remarks, "備考", class: 'form-label ml-2 label-bold' %>
+              <%= f.label :remarks, "備考", class: 'form-label ml-2 label-bold' %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
                 <small class="text-muted">その他ご要望はこちら</small>
               </div>
-              <%= form.text_area :remarks, rows: 5, class: 'form-control bg-light' %>
+              <%= f.text_area :remarks, rows: 5, class: 'form-control bg-light' %>
             </div>
             <div class="actions mt-4">
               <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>

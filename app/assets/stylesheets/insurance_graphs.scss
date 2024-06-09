@@ -1,18 +1,18 @@
 .chart-container {
-    width: 95%;
-    max-width: 1500px;
-    height: 400px;
-    margin: auto;
-    overflow-x: auto;
+  width: 95%;
+  max-width: 1500px;
+  height: 400px;
+  margin: auto;
+  overflow-x: auto;
 }
 
 @media (max-width: 600px) {
-    .chart-container {
-        height: 400px;
-        max-width: 100%;
-    }
+  .chart-container {
+    height: 400px;
+    max-width: 100%;
+  }
 
-    #myBarChart {
-        width: 1000px;
-    }
+  #myBarChart {
+    width: 1000px;
+  }
 }

@@ -6,19 +6,19 @@
           <h2><i class="far fa-envelope"></i> お問い合わせ内容確認</h2>
         </div>
         <div class="card-body">
-          <%= form_with model: @contact, local: true, data: { turbo: false }, url: done_contacts_path do |form| %>
+          <%= form_with model: @contact, local: true, data: { turbo: false }, url: done_contacts_path do |f| %>
             <div class="form-group">
-              <%= form.hidden_field :name %>
+              <%= f.hidden_field :name %>
               <p><strong>名前:</strong> <%= @contact.name %></p>
             </div>
             <hr>
             <div class="form-group">
-              <%= form.hidden_field :email %>
+              <%= f.hidden_field :email %>
               <p><strong>メールアドレス:</strong> <%= @contact.email %></p>
             </div>
             <hr>
             <div class="form-group">
-              <%= form.hidden_field :content %>
+              <%= f.hidden_field :content %>
               <p><strong>お問い合わせ内容:</strong><br><%= simple_format(@contact.content) %></p>
             </div>
             <hr>
