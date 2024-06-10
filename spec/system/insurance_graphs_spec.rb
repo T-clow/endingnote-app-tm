@@ -65,5 +65,29 @@ RSpec.describe "InsuranceGraphs", type: :system, js: true do
         expect(page).to have_css('#myBarChart')
       end
     end
+
+    context "ユーザーが101歳になった場合" do
+      before do
+        travel_to '2091/01/01 0:0'.in_time_zone
+      end
+
+      after do
+        travel_back
+      end
+
+      it "エラーにならずグラフは表示されること" do
+        visit user_insurance_graphs_path(user)
+        expect(page).to have_css('#myBarChart')
+      end
+
+      it "保険金額が反映されないこと" do
+        visit user_insurance_graphs_path(user)
+        insurance_amounts = calculate_insurance_amounts_for_graph([policy1, policy2, policy3], user.birthday.age)
+        chart_container = find('.chart-container')
+        expect(chart_container['data-insurance-amounts']).to eq(insurance_amounts.to_json)
+        insurance_amounts_array = JSON.parse(chart_container['data-insurance-amounts'])
+        expect(insurance_amounts_array.last).to eq(nil)
+      end
+    end
   end
 end

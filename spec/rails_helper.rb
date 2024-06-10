@@ -97,4 +97,8 @@ RSpec.configure do |config|
     ActiveRecord::Base.connection_pool.disconnect!
     ActiveRecord::Base.establish_connection
   end
+
+  config.before(:each) do
+    ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
+  end
 end

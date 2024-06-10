@@ -50,4 +50,22 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content("アカウントを削除しました。")
     end
   end
+
+  describe "パスワード再設定ができること" do
+    it "パスワード再設定のメールが送信されること" do
+      visit new_user_password_path
+      fill_in "メールアドレス", with: user.email
+      click_button "再設定リンクを上記アドレスに送信"
+      expect(page).to have_content("パスワードの再設定について数分以内にメールでご連絡いたします。")
+    end
+
+    it "パスワードを再設定し、成功のメッセージが表示されること" do
+      token = user.send_reset_password_instructions
+      visit edit_user_password_path(reset_password_token: token)
+      fill_in "password-1", with: "newpassword"
+      fill_in "password-2", with: "newpassword"
+      click_button "パスワードを再設定する"
+      expect(page).to have_content("パスワードが正しく変更されました。")
+    end
+  end
 end
