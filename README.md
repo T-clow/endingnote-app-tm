@@ -61,6 +61,7 @@ PCメインで作成いたしましたが、実際の中高齢のユーザーが
 
 ## ER図
 <img width="1399" alt="ER図" src="https://github.com/T-clow/endingnote-app-tm/assets/144991160/4efb8748-d2b0-4c21-be14-766d57ce15bb">
+<img width="1385" alt="ER図 日本語" src="https://github.com/T-clow/endingnote-app-tm/assets/144991160/6e6c0f8e-04fd-4114-bae1-fe9a9ddb94f4">
 
 ## 現在取り組んでいること
 - ユーザーからのフィードバックを基にした機能追加と改善。

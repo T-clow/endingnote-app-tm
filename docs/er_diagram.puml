@@ -1,0 +1,91 @@
+@startuml er_diagram
+title エンディングノートアプリ ER図
+
+entity "User" {
+  * id : integer -- ID
+  * email : string -- メール
+  * encrypted_password : string -- 暗号化パスワード
+  * full_name : string -- 氏名
+  * phone_number : string -- 電話番号
+  * remember_created_at : datetime -- リメンバー作成日時
+  * reset_password_sent_at : datetime -- パスワードリセット送信日時
+  * reset_password_token : string -- パスワードリセットトークン
+  * username : string -- ユーザー名
+}
+
+entity "Birthday" {
+  * id : integer -- ID
+  * date_of_birth : date -- 生年月日
+  * user_id : integer -- ユーザーID
+}
+
+entity "FuneralPreference" {
+  * id : integer -- ID
+  * budget : string -- 予算
+  * funeral_type : string -- 葬儀タイプ
+  * invitees : string -- 招待者
+  * location : string -- 場所
+  * remarks : text -- 備考
+  * sect : string -- 宗派
+  * user_id : integer -- ユーザーID
+}
+
+entity "InsurancePolicy" {
+  * id : integer -- ID
+  * insurance_amount : integer -- 保険金額
+  * insurance_company : string -- 保険会社
+  * insurance_period : integer -- 保険期間
+  * insurance_type : string -- 保険タイプ
+  * note : text -- メモ
+  * policy_number : string -- ポリシー番号
+  * user_id : integer -- ユーザーID
+}
+
+entity "MemorialPhoto" {
+  * id : integer -- ID
+  * comment : text -- コメント
+  * visible_to : string -- 表示先
+  * user_id : integer -- ユーザーID
+}
+
+entity "WillVideo" {
+  * id : integer -- ID
+  * user_id : integer -- ユーザーID
+}
+
+entity "ActiveStorage::Blob" {
+  * id : integer -- ID
+  * byte_size : integer -- バイトサイズ
+  * checksum : string -- チェックサム
+  * content_type : string -- コンテンツタイプ
+  * filename : string -- ファイル名
+  * key : string -- キー
+  * metadata : text -- メタデータ
+  * service_name : string -- サービス名
+}
+
+entity "ActiveStorage::Attachment" {
+  * id : integer -- ID
+  * name : string -- 名前
+  * record_type : string -- レコードタイプ
+}
+
+entity "ActiveStorage::VariantRecord" {
+  * id : integer -- ID
+  * variation_digest : string -- バリエーションダイジェスト
+}
+
+User ||--o{ Birthday : "has one"
+User ||--o{ FuneralPreference : "has many"
+User ||--o{ InsurancePolicy : "has many"
+User ||--o{ MemorialPhoto : "has many"
+User ||--o{ WillVideo : "has many"
+Birthday }|--|| User : "belongs to"
+FuneralPreference }|--|| User : "belongs to"
+InsurancePolicy }|--|| User : "belongs to"
+MemorialPhoto }|--|| User : "belongs to"
+WillVideo }|--|| User : "belongs to"
+ActiveStorage::Blob ||--o{ ActiveStorage::Attachment : "has many"
+ActiveStorage::Attachment }|--|| ActiveStorage::Blob : "belongs to"
+ActiveStorage::VariantRecord }|--|| ActiveStorage::Blob : "belongs to"
+@enduml
