@@ -37,6 +37,7 @@ PCメインで作成いたしましたが、実際の中高齢のユーザーが
 - Vue.js
 - Chart.js
 - FontAwesome
+- Importmap
 
 ### インフラ
 - Docker
@@ -57,7 +58,7 @@ PCメインで作成いたしましたが、実際の中高齢のユーザーが
 - Geolocation API
 
 ## インフラ構成図
-*（ここにインフラ構成図を追加してください）*
+![インフラ構成図](https://github.com/T-clow/endingnote-app-tm/assets/144991160/afa62521-1306-441a-85f9-66dc03df197c)
 
 ## ER図
 <img width="1399" alt="ER図" src="https://github.com/T-clow/endingnote-app-tm/assets/144991160/4efb8748-d2b0-4c21-be14-766d57ce15bb">
