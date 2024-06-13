@@ -15,7 +15,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <%= link_to 'エンディングノート', "/", class: 'navbar-brand navbar-brand-tablet' %>
+        <%= link_to "エンディングノート", "/", class: "navbar-brand navbar-brand-tablet" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,31 +53,30 @@
             </li>
           </ul>
           <% if current_user %>
-            <% if current_user.avatar.attached? %>
-              <%= image_tag rails_blob_path(current_user.avatar), class: 'avatar-image' %>
-            <% else %>
-              <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
+            <%= link_to edit_user_registration_path, data: { turbo: "false" }, role: "button", class: "text-decoration-none" do %>
+              <% if current_user.avatar.attached? %>
+                <%= image_tag rails_blob_path(current_user.avatar), class: "avatar-image" %>
+              <% else %>
+                <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
+              <% end %>
+              <span class="user_name text-decoration-none"><%= current_user.username %> 様</span>
             <% end %>
-            <p class="user_name"><%= current_user.username %> 様</p>
             <% if user_signed_in? %>
-              <%= link_to edit_user_registration_path, class: 'btn btn-outline-primary my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
-                <i class="fas fa-edit"></i><span class="tablet-hide"> 編集</span>
-              <% end %>
-            <% end %>
-            <%= form_tag(destroy_user_session_path, method: :delete) do %>
-              <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 my-sm-0 me-2', role: 'button') do %>
-                <i class="fas fa-sign-out-alt"></i><span class="tablet-hide"> ログアウト</span>
+              <%= form_tag(destroy_user_session_path, method: :delete, data: { turbo_confirm: "ログアウトしますか？" }) do %>
+                <%= button_tag(type: "submit", class: "btn btn-outline-success my-2 my-sm-0 me-2", role: "button") do %>
+                  <i class="fas fa-sign-out-alt"></i><span class="tablet-hide"> ログアウト</span>
+                <% end %>
               <% end %>
             <% end %>
             <% else %>
-              <%= link_to new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
+              <%= link_to new_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0 me-2", data: { turbo: "false" }, role: "button" do %>
                 <i class="fas fa-user-plus"></i><span> 新規登録</span>
               <% end %>
-              <%= link_to new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0 me-2', data: { turbo: "false" }, role: 'button' do %>
+              <%= link_to new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0 me-2", data: { turbo: "false" }, role: "button" do %>
                 <i class="fas fa-sign-in-alt"></i><span> ログイン</span>
               <% end %>
               <%= form_with url: users_guest_sign_in_path, method: :post, local: true do |form| %>
-                <%= button_tag(type: 'submit', class: 'btn btn-outline-success my-2 my-sm-0') do %>
+                <%= button_tag(type: "submit", class: "btn btn-outline-success my-2 my-sm-0") do %>
                   <i class="fas fa-user-secret"></i><span> ゲスト</span>
                 <% end %>
               <% end %>
@@ -95,7 +94,7 @@
       <div class="container-fluid py-3">
         <div class="row">
           <div class="text-center py-3" "col-md-6">
-            <%= link_to 'エンディングノート', "/", class: 'navbar-brand' %>
+            <%= link_to "エンディングノート", "/", class: "navbar-brand" %>
           </div>
         </div>
       </div>
