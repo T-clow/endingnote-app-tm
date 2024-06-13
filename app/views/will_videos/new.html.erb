@@ -1,9 +1,9 @@
 <% if @will_video.errors.any? %>
   <div id="error_explanation">
     <ul>
-    <% @will_video.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @will_video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -18,16 +18,16 @@
           <%= form_with(model: [@user, @will_video], local: true) do |f| %>
             <div class="form-group">
               <%= f.label :video, "遺言動画" %>
-              <%= f.file_field :video, name: 'will_video[video]', accept: 'video/*', id: 'videoFile' %>
+              <%= f.file_field :video, name: "will_video[video]", accept: "video/*", id: "videoFile" %>
               <small class="form-text text-muted">※動画は約15分以内、80MB以下に設定してください。</small>
             </div>
             <div class="actions mt-4">
-              <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
+              <%= button_tag(type: "submit", class: "btn btn-primary w-100") do %>
                 <i class="fas fa-upload"></i><span> 動画を登録</span>
               <% end %>
             </div>
           <% end %>
-          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+          <%= link_to "/", class: "btn btn-secondary w-100 mt-3", role: "button" do %>
             <i class="fas fa-home"></i><span> トップページへ</span>
           <% end %>
         </div>

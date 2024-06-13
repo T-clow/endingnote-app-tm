@@ -19,56 +19,56 @@
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="form-group text-start">
-              <%= f.label :username, 'ユーザー名', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :username, "ユーザー名", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">アプリ上のお名前</small>
               </div>
-              <%= f.text_field :username, class: 'form-control bg-light' %>
+              <%= f.text_field :username, class: "form-control bg-light" %>
             </div>
             <div class="form-group text-start">
-              <%= f.label :full_name, 'お名前', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :full_name, "お名前", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">フルネーム推奨</small>
               </div>
-              <%= f.text_field :full_name, class: 'form-control bg-light' %>
+              <%= f.text_field :full_name, class: "form-control bg-light" %>
             </div>
             <div class="form-group text-start">
-              <%= f.label :email, 'Eメール', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :email, "Eメール", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">例:user@example.com</small>
               </div>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control bg-light' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-light" %>
             </div>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div class="alert alert-info">現在、次のEメールアドレスの確認を待っています: <%= resource.unconfirmed_email %></div>
             <% end %>
             <div class="form-group text-start">
-              <%= f.label :phone_number, '電話番号', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :phone_number, "電話番号", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">ハイフン不要</small>
               </div>
-              <%= f.telephone_field :phone_number, class: 'form-control bg-light' %>
+              <%= f.telephone_field :phone_number, class: "form-control bg-light" %>
             </div>
             <div class="form-group text-start">
-              <%= f.label :avatar, 'プロフィール画像', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :avatar, "プロフィール画像", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-warning rounded-0">任意</span>
               </div>
-              <%= f.file_field :avatar, class: 'form-control bg-light' %>
+              <%= f.file_field :avatar, class: "form-control bg-light" %>
             </div>
             <div class="form-group text-start password-container">
-              <%= f.label :password, '新パスワード', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :password, "新パスワード", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
                 <div class="password-field-container">
-                  <%= f.password_field :password, id: 'password-1', class: "form-control", placeholder: "ご登録のパスワードをご入力" %>
+                  <%= f.password_field :password, id: "password-1", class: "form-control", placeholder: "ご登録のパスワードをご入力" %>
                 </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-1">
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="form-group text-start password-container">
-              <%= f.label :password_confirmation, 'パスワード確認', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :password_confirmation, "パスワード確認", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-success rounded-0">変更</span>の場合
                 <span class="badge badge-info rounded-0">必須</span>
@@ -86,9 +86,9 @@
               </div>
               <div class="input-group">
                 <div class="password-field-container">
-                  <%= f.password_field :password_confirmation, id: 'password-2', class: "form-control", placeholder: "パスワード確認" %>
+                  <%= f.password_field :password_confirmation, id: "password-2", class: "form-control", placeholder: "パスワード確認" %>
                 </div>
-                  <div class="input-group-append">
+                <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-2">
                     <i id="password-icon-2" class="fas fa-eye"></i>
                   </button>
@@ -96,14 +96,14 @@
               </div>
             </div>
             <div class="form-group text-start password-container">
-              <%= f.label :current_password, '現在のパスワード', class: 'form-label ml-2 label-bold' %>
+              <%= f.label :current_password, "現在のパスワード", class: "form-label ml-2 label-bold" %>
               <div class="ml-1 mb-1">
                 <span class="badge badge-info rounded-0">必須</span>
                 <small class="text-muted">英数字６文字以上</small>
               </div>
               <div class="input-group">
                 <div class="password-field-container">
-                  <%= f.password_field :current_password, id: 'password-3', class: "form-control", placeholder: "現在のパスワードをご入力" %>
+                  <%= f.password_field :current_password, id: "password-3", class: "form-control", placeholder: "現在のパスワードをご入力" %>
                 </div>
                 <div class="input-group-append">
                   <button type="button" class="btn" id="toggle-password-3">
@@ -113,12 +113,12 @@
               </div>
             </div>
             <div class="actions">
-              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: "false" }) do %>
+              <%= button_tag(type: "submit", class: "btn btn-primary w-100 mt-3", data: { turbo: "false" }) do %>
                 <i class="fas fa-sync"></i><span> 更新</span>
               <% end %>
             </div>
           <% end %>
-          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+          <%= link_to "/", class: "btn btn-secondary w-100 mt-3", role: "button" do %>
             <i class="fas fa-home"></i><span> トップページへ</span>
           <% end %>
         </div>

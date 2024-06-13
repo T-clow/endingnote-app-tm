@@ -1,9 +1,9 @@
 <% if @memorial_photo.errors.any? %>
   <div id="error_explanation">
     <ul>
-    <% @memorial_photo.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @memorial_photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -18,21 +18,21 @@
           <%= form_with(model: [@user, @memorial_photo], local: true) do |f| %>
             <div class="form-group">
               <%= f.label :photo, "ご遺影の画像" %>
-              <%= f.file_field :photo, accept: 'image/*', id: 'photoFile' %>
+              <%= f.file_field :photo, accept: "image/*", id: "photoFile" %>
               <small class="form-text text-muted">※画像を登録してください 登録できる画像は3つまでです</small>
             </div>
             <div class="form-group">
               <%= f.label :comment, "コメント" %>
-              <%= f.text_area :comment, rows: 4, class: 'form-control' %>
+              <%= f.text_area :comment, rows: 4, class: "form-control" %>
               <small class="form-text text-muted">画像に関するコメントを残せます。</small>
             </div>
             <div class="actions mt-4">
-              <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
+              <%= button_tag(type: "submit", class: "btn btn-primary w-100") do %>
                 <i class="fas fa-upload"></i><span> 登録</span>
               <% end %>
             </div>
           <% end %>
-          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+          <%= link_to "/", class: "btn btn-secondary w-100 mt-3", role: "button" do %>
             <i class="fas fa-home"></i><span> トップページへ</span>
           <% end %>
         </div>

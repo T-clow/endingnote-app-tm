@@ -19,7 +19,7 @@ if ENV['CI'] == 'true'
     options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
     client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120
+    client.read_timeout = 180
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,
@@ -39,7 +39,7 @@ else
     options.add_emulation(device_metrics: { latitude: 35.6895, longitude: 139.6917, accuracy: 100 })
 
     client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120
+    client.read_timeout = 180
 
     Capybara::Selenium::Driver.new(app,
       browser: :remote,

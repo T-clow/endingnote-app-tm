@@ -5,13 +5,13 @@
         <div class="card-header">
           <h1 class="mb-0">
             <% if current_user.avatar.attached? %>
-              <%= image_tag rails_blob_path(current_user.avatar), class: 'avatar-image' %>
+              <%= image_tag rails_blob_path(current_user.avatar), class: "avatar-image" %>
             <% else %>
               <%= image_tag("https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", class: "avatar-image") %>
             <% end %>
             <%= current_user.username %>様
             <% if @insurance_policies.empty? %>
-              <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: 'text-decoration-none' %>の保険金額
+              <%= link_to "(#{current_user.birthday.age})", edit_user_birthday_path(current_user), class: "text-decoration-none" %>の保険金額
             <% else %>
               (<%= current_user.birthday.age %>)の保険金額
             <% end %>
@@ -21,7 +21,7 @@
         <div class="card-body">
           <div class="mb-3">
             <% if @insurance_policies.empty? %>
-              <%= link_to edit_user_birthday_path(current_user), class: 'text-decoration-none' do %>
+              <%= link_to edit_user_birthday_path(current_user), class: "text-decoration-none" do %>
                 <i class="fas fa-birthday-cake"></i>
                 <%= current_user.birthday.date_of_birth %>
               <% end %>
@@ -41,7 +41,7 @@
                   <%= number_field_tag :age, nil, class: "form-control bg-light mr-2 custom-width", autocomplete: "off" %>歳
                 </div>
               </div>
-              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3", data: { turbo: false }) do %>
+              <%= button_tag(type: "submit", class: "btn btn-primary w-100 mt-3", data: { turbo: false }) do %>
                 <i class="fas fa-calculator"></i><span> 計算</span>
               <% end %>
             <% end %>
@@ -88,8 +88,8 @@
                             <i class="fas fa-bars"></i>
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><%= link_to '詳細', user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
-                            <li><%= link_to '編集', edit_user_insurance_policy_path(@user, policy), class: 'dropdown-item' %></li>
+                            <li><%= link_to "詳細", user_insurance_policy_path(@user, policy), class: "dropdown-item" %></li>
+                            <li><%= link_to "編集", edit_user_insurance_policy_path(@user, policy), class: "dropdown-item" %></li>
                           </ul>
                         </div>
                       </td>
@@ -109,18 +109,18 @@
                       <strong>保険期間:</strong> <%= policy.insurance_period == 100 ? "終身" : "#{policy.insurance_period}歳" %>
                     </p>
                     <div>
-                      <%= link_to '詳細', user_insurance_policy_path(@user, policy), class: 'btn btn-primary btn-sm me-2' %>
-                      <%= link_to '編集', edit_user_insurance_policy_path(@user, policy), class: 'btn btn-secondary btn-sm me-2 mt-2 w-100' %>
+                      <%= link_to "詳細", user_insurance_policy_path(@user, policy), class: "btn btn-primary btn-sm me-2" %>
+                      <%= link_to "編集", edit_user_insurance_policy_path(@user, policy), class: "btn btn-secondary btn-sm me-2 mt-2 w-100" %>
                     </div>
                   </div>
                 </div>
               <% end %>
             </div>
           <% end %>
-          <%= link_to new_user_insurance_policy_path(@user), class: 'btn btn-success w-100 mt-2' do %>
+          <%= link_to new_user_insurance_policy_path(@user), class: "btn btn-success w-100 mt-2" do %>
             <i class="fas fa-plus"></i><span> 新しい保険契約を追加</span>
           <% end %>
-          <%= link_to  "/", class: "btn btn-secondary w-100 mt-3", role: 'button' do %>
+          <%= link_to "/", class: "btn btn-secondary w-100 mt-3", role: "button" do %>
             <i class="fas fa-home"></i><span> トップページへ</span>
           <% end %>
         </div>
