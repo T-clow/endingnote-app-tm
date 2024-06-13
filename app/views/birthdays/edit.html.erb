@@ -18,7 +18,7 @@
         <div class="card-body">
           <%= form_with model: [@user, @birthday], url: user_birthday_path(@user), local: true do |f| %>
             <div class="form-group">
-              <%= f.label :date_of_birth, '変更する生年月日をご入力ください' %><br>
+              <%= f.label :date_of_birth, "変更する生年月日をご入力ください" %><br>
               <%= raw sprintf(
                     f.date_select(
                       :date_of_birth,
@@ -26,12 +26,12 @@
                       start_year: 1900,
                       end_year: Time.zone.today.year,
                       default: { year: 1980 },
-                      date_separator: '%s'
+                      date_separator: "%s"
                     ),
-                    '年 ', '月 ') + '日' %>
+                    "年 ", "月 ") + "日" %>
               </div>
             <div class="actions">
-              <%= button_tag(type: 'submit', class: "btn btn-primary w-100 mt-3") do %>
+              <%= button_tag(type: "submit", class: "btn btn-primary w-100 mt-3") do %>
                 <i class="fas fa-sync"></i><span> 更新</span>
               <% end %>
             </div>

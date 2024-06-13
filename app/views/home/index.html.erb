@@ -10,7 +10,7 @@
   <main class="container">
     <div class="row">
       <div class="col-md-4 mb-3">
-        <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+        <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "text-decoration-none", data: { turbo: false } do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-info">
               <h2 class="card-title"><i class="far fa-id-card icon-hover-animation"></i> ご加入中の保険</h2>
@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-3">
-        <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+        <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), class: "text-decoration-none", data: { turbo: false } do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-success">
               <h2 class="card-title"><i class="fas fa-street-view icon-hover-animation"></i> 葬儀場MAP</h2>
@@ -30,7 +30,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-3">
-          <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+          <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), class: "text-decoration-none", data: { turbo: false } do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-info">
               <h2 class="card-title"><i class="fas fa-users icon-hover-animation"></i> ご葬儀プラン</h2>
@@ -40,7 +40,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-3">
-        <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+        <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), class: "text-decoration-none", data: { turbo: false } do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-success">
               <h2 class="card-title"><i class="fas fa-video icon-hover-animation"></i> ご遺言動画</h2>
@@ -50,7 +50,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-3">
-        <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: 'text-decoration-none', data: { turbo: false } do %>
+        <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), class: "text-decoration-none", data: { turbo: false } do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-info">
               <h2 class="card-title"><i class="fas fa-camera icon-hover-animation"></i> ご遺影写真</h2>
@@ -60,7 +60,7 @@
         <% end %>
       </div>
       <div class="col-md-4 mb-3">
-        <%= link_to contacts_path, class: 'text-decoration-none' do %>
+        <%= link_to contacts_path, class: "text-decoration-none" do %>
           <div class="card hover-action h-100">
             <div class="card-body btn btn-outline-success">
               <h2 class="card-title"><i class="far fa-envelope icon-hover-animation"></i> お問い合わせ</h2>
