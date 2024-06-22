@@ -15,38 +15,38 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <%= link_to "エンディングノート", "/", class: "navbar-brand navbar-brand-tablet hover-action" %>
+        <%= link_to "エンディングノート", "/", class: "navbar-brand navbar-brand-tablet hover-action-brand" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to (user_signed_in? ? (current_user.birthday ? user_insurance_graphs_path(current_user) : new_user_birthday_path(current_user)) : new_user_session_path), class: "nav-link", data: { turbo: false } do %>
                 <i class="far fa-id-card"></i><span> ご加入中の保険</span>
               <% end %>
             </li>
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to (user_signed_in? ? user_funeral_hall_map_search_index_path(current_user) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-street-view"></i><span> 葬儀場MAP</span>
               <% end %>
             </li>
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to (user_signed_in? ? (current_user.funeral_preference.present? ? user_funeral_preference_path(current_user, current_user.funeral_preference) : new_user_funeral_preference_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-users"></i><span> ご葬儀プラン</span>
               <% end %>
             </li>
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to (user_signed_in? ? (current_user.will_videos.any? ? user_will_video_path(current_user, current_user.will_videos.last) : new_user_will_video_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-video"></i><span> ご遺言動画</span>
               <% end %>
             </li>
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to (user_signed_in? ? (current_user.memorial_photos.any? ? user_memorial_photos_path(current_user) : new_user_memorial_photo_path(current_user)) : new_user_session_path), data: { turbo: "false" }, class: "nav-link" do %>
                 <i class="fas fa-camera"></i><span> ご遺影写真</span>
               <% end %>
             </li>
-            <li class="nav-item hover-action">
+            <li class="nav-item hover-action-brand">
               <%= link_to contacts_path, class: "nav-link" do %>
                 <i class="fas fa-envelope"></i><span> お問い合わせ</span>
               <% end %>
@@ -94,7 +94,7 @@
       <div class="container-fluid py-3">
         <div class="row">
         <div class="text-center py-3" "col-md-6">
-            <%= link_to "エンディングノート", "/", class: "navbar-brand hover-action" %>
+            <%= link_to "エンディングノート 〜家族のために〜", "/", class: "navbar-brand hover-action-brand" %>
           </div>
         </div>
       </div>
