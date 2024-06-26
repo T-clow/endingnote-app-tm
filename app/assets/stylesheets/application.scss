@@ -11,6 +11,19 @@ body {
   padding-top: 50px;
 }
 
+.navbar-brand {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.hover-action-brand {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+}
+
+.hover-action-brand:hover {
+  transform: scale(1.03);
+}
+
 @media (min-width: 768px) {
   .navbar {
     height: 60px;
