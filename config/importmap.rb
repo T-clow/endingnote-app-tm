@@ -7,7 +7,6 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "video_validation", to: "video_validation.js"
 pin "map"
-pin "vue", to: "https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.esm-browser.js", preload: true
 pin "chart.js"
 pin "@kurkle/color", to: "@kurkle--color.js"
 pin "charts/bar_chart", to: "charts/bar_chart.js"
